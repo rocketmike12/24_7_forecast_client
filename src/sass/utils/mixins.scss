@@ -1,0 +1,37 @@
+@mixin typography($font-family, $font-weight, $font-style, $font-size, $line-height, $letter-spacing, $text-align) {
+	font-family: $font-family;
+	font-weight: $font-weight;
+	font-style: $font-style;
+	font-size: $font-size;
+	leading-trim: NONE;
+	line-height: $line-height;
+	letter-spacing: $letter-spacing;
+	text-align: $text-align;
+}
+
+@mixin flex($justify-content, $align-items, $gap, $flex-wrap, $flex-direction) {
+	display: flex;
+	justify-content: $justify-content;
+	align-items: $align-items;
+	gap: $gap;
+	flex-wrap: $flex-wrap;
+	flex-direction: $flex-direction;
+}
+
+@mixin mob() {
+	@media screen and (min-width: 393px) {
+		@content;
+	}
+}
+
+@mixin tab() {
+	@media screen and (min-width: 834px) {
+		@content;
+	}
+}
+
+@mixin desk() {
+	@media screen and (min-width: 1440px) {
+		@content;
+	}
+}

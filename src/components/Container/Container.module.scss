@@ -1,0 +1,20 @@
+@import "../../sass/base/base.scss";
+
+.container {
+	width: 100%;
+	padding: 0 15px;
+	margin: 0 auto;
+	outline: 1px solid #ff0000;
+
+	@include mob {
+		width: 293px;
+	}
+
+	@include tab {
+		width: 634px;
+	}
+
+	@include desk {
+		width: 1140px;
+	}
+}
