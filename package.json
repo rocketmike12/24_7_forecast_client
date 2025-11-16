@@ -1,25 +1,24 @@
 {
 	"name": "24_7_forecast",
-	"private": true,
 	"version": "0.0.0",
-	"type": "module",
+	"description": "",
+	"homepage": "https://github.com/rocketmike12/24_7_forecast#readme",
+	"bugs": {
+		"url": "https://github.com/rocketmike12/24_7_forecast/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rocketmike12/24_7_forecast.git"
+	},
+	"author": "rocketmike12",
+	"workspaces": [
+		"client",
+		"server"
+	],
 	"scripts": {
-		"dev": "nodemon src/server/main.js -w src/server",
-		"start": "NODE_ENV=production node src/server/main.js",
-		"build": "vite build"
+		"client_dev": "npm --workspace=client run dev",
+		"server_dev": "npm --workspace=server run dev"
 	},
-	"dependencies": {
-		"express": "^5.1.0",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0",
-		"sass-embedded": "^1.93.3",
-		"vite-express": "*"
-	},
-	"devDependencies": {
-		"@types/react": "^19.2.5",
-		"@types/react-dom": "^19.2.3",
-		"@vitejs/plugin-react": "^5.1.1",
-		"nodemon": "^3.1.11",
-		"vite": "^7.2.2"
-	}
+	"dependencies": {},
+	"devDependencies": {}
 }
