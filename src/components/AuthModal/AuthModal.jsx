@@ -1,9 +1,16 @@
 import styles from "./AuthModal.module.scss";
 
-export const AuthModal = function ({ open }) {
+export const AuthModal = function ({ isOpen, closeModal }) {
+	const handleClose = function (e) {
+		if (e.type === "keydown" && e.code === "Escape") closeModal();
+		if (e.type === "click" && e.target === e.currentTarget) closeModal();
+	};
+
+	document.addEventListener("keydown", handleClose);
+
 	return (
 		<>
-			<div className={`${styles["overlay"]} ${open ? "" : styles["hidden"]}`}>
+			<div id="overlay" onClick={handleClose} className={`${styles["overlay"]} ${isOpen ? "" : styles["hidden"]}`}>
 				<div className={styles["modal"]}>
 					<h2 className={styles["modal__title"]}>Sign up</h2>
 

@@ -5,7 +5,7 @@ import { Container } from "../Container/Container";
 
 import styles from "./Header.module.scss";
 
-export const Header = function () {
+export const Header = function ({ openModal }) {
 	return (
 		<>
 			<header className={styles["header"]}>
@@ -27,7 +27,7 @@ export const Header = function () {
 					</nav>
 
 					<div className={styles["header__profile"]}>
-						<button className={styles["header__profile-button"]}>Sign Up</button>
+						<button className={styles["header__profile-button"]} onClick={openModal}>Sign Up</button>
 						<img src={profileImg} alt="user" className={styles["header__profile-img"]} />
 					</div>
 				</Container>

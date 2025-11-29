@@ -9,15 +9,25 @@ import { Footer } from "./components/Footer/Footer";
 import { AuthModal } from "./components/AuthModal/AuthModal";
 
 export const App = function () {
-	const [modalOpen, setModalOpen] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isWeatherOpen, setIsWeatherOpen] = useState(false);
+
+	const openModal = function () {
+		setIsModalOpen(true);
+	};
+
+	const closeModal = function () {
+		setIsModalOpen(false);
+	};
 
 	return (
 		<>
-			<AuthModal open={modalOpen} />
+			<AuthModal isOpen={isModalOpen} closeModal={closeModal} />
 
-			<Header />
+			<Header openModal={openModal} />
+
 			<Hero />
-			<Weather />
+			<Weather open={isWeatherOpen} />
 			<News />
 			<Footer />
 		</>
