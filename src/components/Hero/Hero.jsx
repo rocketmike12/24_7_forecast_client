@@ -36,7 +36,7 @@ export const Hero = function () {
 						</p>
 					</div>
 					<div className={styles["hero__search"]}>
-						<input type="text" placeholder="Search location..." className={styles["hero__search__input"]} />
+						<input autoFocus type="text" placeholder="Search location..." className={styles["hero__search__input"]} />
 						<button className={styles["hero__search__button"]}>
 							<FiSearch />
 						</button>
