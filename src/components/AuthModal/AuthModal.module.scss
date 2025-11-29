@@ -27,6 +27,9 @@
 
 		&__title {
 			margin-bottom: 40px;
+
+			@include typography(Montserrat Alternates, 500, Medium, 28px, 100%, 0%, _);
+			color: $fg-light;
 		}
 
 		&__form {
@@ -46,16 +49,23 @@
 		}
 
 		&__input-label {
+			@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
+
 			color: $fg-light;
 		}
 
 		&__input {
-			background: $input-bg-light;
 			width: 100%;
 			height: 50px;
+
+			padding: 16px 20px;
+
 			border-radius: 10px;
 
+			background-color: $input-bg-light;
+
 			&::placeholder {
+				@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
 				color: $input-fg-light;
 			}
 		}
@@ -69,6 +79,15 @@
 			margin-bottom: 15px;
 
 			border-radius: 10px;
+		}
+
+		&__login {
+			@include typography(Montserrat, 500, Medium, 10px, 100%, 0%, center);
+
+			&__link {
+                color: inherit;
+                margin-left: 1ex;
+			}
 		}
 	}
 }
