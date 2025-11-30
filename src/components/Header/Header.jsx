@@ -10,10 +10,7 @@ import logo from "../../img/logo.svg";
 import styles from "./Header.module.scss";
 
 export const Header = function ({ openModal }) {
-	const user = useContext(AuthContext);
-
-	user.setIsLogin(true);
-	user.setUsername("test");
+	const { isLogin, setIsLogin, username, setUsername } = useContext(AuthContext);
 
 	return (
 		<>
@@ -36,10 +33,10 @@ export const Header = function ({ openModal }) {
 					</nav>
 
 					<div className={styles["header__profile"]}>
-						{user.isLogin && <p className="header__profile-username">{user.username}</p>}
+						{isLogin && <p className={styles["header__profile-username"]}>{username}</p>}
 
 						<button className={styles["header__profile-button"]} onClick={openModal}>
-							{user.isLogin ? "Profile" : "Sign Up"}
+							{isLogin ? "Profile" : "Sign Up"}
 						</button>
 
 						<img src={profileImg} alt="user" className={styles["header__profile-img"]} />

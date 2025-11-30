@@ -1,9 +1,30 @@
+import { useContext } from "react";
+
+import { AuthContext } from "../../contexts/AuthContext";
+
 import styles from "./AuthModal.module.scss";
 
 export const AuthModal = function ({ isOpen, closeModal }) {
+	const { isLogin, setIsLogin, username, setUsername } = useContext(AuthContext);
+
 	const handleClose = function (e) {
 		if (e.type === "keydown" && e.code === "Escape") closeModal();
 		if (e.type === "click" && e.target === e.currentTarget) closeModal();
+	};
+
+	const handleSubmit = function (e) {
+		e.preventDefault();
+
+		const form = e.currentTarget;
+		const username = form.elements.username.value;
+		const password = form.elements.password.value;
+
+		setIsLogin(true);
+		setUsername(username);
+
+		form.reset();
+
+		closeModal();
 	};
 
 	document.addEventListener("keydown", handleClose);
@@ -14,7 +35,7 @@ export const AuthModal = function ({ isOpen, closeModal }) {
 				<div className={styles["modal"]}>
 					<h2 className={styles["modal__title"]}>Sign up</h2>
 
-					<form className={styles["modal__form"]}>
+					<form onSubmit={handleSubmit} className={styles["modal__form"]}>
 						<div className={styles["modal__input-wrap"]}>
 							<label htmlFor="username" className={styles["modal__input-label"]}>
 								Username
@@ -41,8 +62,10 @@ export const AuthModal = function ({ isOpen, closeModal }) {
 						</button>
 
 						<p className={styles["modal__login"]}>
-							Already have an account? 
-							<a href="" className={styles["modal__login__link"]}>Log In</a>
+							Already have an account?
+							<a href="" className={styles["modal__login__link"]}>
+								Log In
+							</a>
 						</p>
 					</form>
 				</div>

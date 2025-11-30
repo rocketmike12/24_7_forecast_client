@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { AuthContext } from "./contexts/AuthContext";
 
 import { Header } from "./components/Header/Header";
 import { Hero } from "./components/Hero/Hero";
@@ -9,6 +11,13 @@ import { Footer } from "./components/Footer/Footer";
 import { AuthModal } from "./components/AuthModal/AuthModal";
 
 export const App = function () {
+	const { isLogin, setIsLogin, username, setUsername } = useContext(AuthContext);
+
+	useEffect(() => {
+		// setIsLogin(true);
+		// setUsername("test");
+	}, []);
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isWeatherOpen, setIsWeatherOpen] = useState(false);
 

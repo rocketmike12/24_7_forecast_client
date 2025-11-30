@@ -38,6 +38,11 @@
 		align-items: center;
 		gap: 27px;
 
+		&-username {
+			@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+			color: $fg-light;
+		}
+
 		&-button {
 			width: 89px;
 			height: 35px;
