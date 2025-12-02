@@ -28,6 +28,7 @@ export const AuthModal = function ({ isOpen, closeModal }) {
 			.then((res) => {
 				setIsLogin(true);
 				setUsername(res.data.username);
+				console.log(res.cookie);
 				console.log(res.cookies);
 			})
 			.catch((err) => {
