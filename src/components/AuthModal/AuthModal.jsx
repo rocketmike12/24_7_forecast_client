@@ -24,7 +24,7 @@ export const AuthModal = function ({ isOpen, closeModal }) {
 		const password = form.elements.password.value;
 
 		axios
-			.post("/auth/register", { username: username, password: password }, { withCredentials: true })
+			.post("/auth/register", { username: username, password: password }, { withCredentials: true, partitioned: true })
 			.then((res) => {
 				setIsLogin(true);
 				setUsername(res.data.username);
