@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import { AuthContext } from "./contexts/AuthContext";
 
@@ -11,12 +11,7 @@ import { Footer } from "./components/Footer/Footer";
 import { AuthModal } from "./components/AuthModal/AuthModal";
 
 export const App = function () {
-	const { isLogin, setIsLogin, username, setUsername } = useContext(AuthContext);
-
-	useEffect(() => {
-		// setIsLogin(true);
-		// setUsername("test");
-	}, []);
+	const { favorites } = useContext(AuthContext);
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalRole, setModalRole] = useState("register");
@@ -37,7 +32,7 @@ export const App = function () {
 			<Header openModal={openModal} />
 
 			<Hero />
-			<Weather open={isWeatherOpen} />
+			<Weather isOpen={isWeatherOpen} favorites={favorites} />
 			<News />
 			<Footer />
 		</>

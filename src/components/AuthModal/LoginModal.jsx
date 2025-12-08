@@ -1,15 +1,24 @@
 import { useContext } from "react";
 
 import axios from "axios";
+import { userApi } from "../../apis/userApi";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
 import styles from "./AuthModal.module.scss";
 
-axios.defaults.baseURL = import.meta.env.VITE_ENV === "dev" ? "/api/v0" : import.meta.env.VITE_USERS_API;
-
 export const LoginModal = function ({ setRole, closeModal }) {
 	const { isLogin, setIsLogin, username, setUsername } = useContext(AuthContext);
+
+	const loginUser = async function (username, password) {
+		try {
+			const { data } = await userApi.post("/auth/login", { username: username, password: password }, { withCredentials: true });
+			setIsLogin(true);
+			setUsername(data.username);
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	const handleSubmit = function (e) {
 		e.preventDefault();
@@ -18,15 +27,7 @@ export const LoginModal = function ({ setRole, closeModal }) {
 		const username = form.elements.username.value;
 		const password = form.elements.password.value;
 
-		axios
-			.post("/auth/login", { username: username, password: password }, { withCredentials: true })
-			.then((res) => {
-				setIsLogin(true);
-				setUsername(res.data.username);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
+		loginUser(username, password);
 
 		form.reset();
 

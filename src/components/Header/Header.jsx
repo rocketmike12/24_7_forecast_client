@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import axios from "axios";
+import { userApi } from "../../apis/userApi";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -14,18 +15,20 @@ import styles from "./Header.module.scss";
 export const Header = function ({ openModal }) {
 	const { isLogin, setIsLogin, username, setUsername } = useContext(AuthContext);
 
+	const logoutUser = async function () {
+		try {
+			await userApi.post("/auth/logout", "", { withCredentials: true });
+			setIsLogin(false);
+			setUsername(null);
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
 	const handleLogout = function (e) {
 		if (e.target !== e.currentTarget) return;
 
-		axios
-			.post("/auth/logout", "", { withCredentials: true })
-			.then((res) => {
-				setIsLogin(false);
-				setUsername(null);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
+		logoutUser();
 	};
 
 	return (
@@ -37,13 +40,19 @@ export const Header = function ({ openModal }) {
 					<nav className={styles["header__nav"]}>
 						<ul className={styles["header__nav-list"]}>
 							<li className={styles["header__nav-list-item"]}>
-								<a href="#" className={styles["header__nav-list-link"]}>Who we are</a>
+								<a href="#" className={styles["header__nav-list-link"]}>
+									Who we are
+								</a>
 							</li>
 							<li className={styles["header__nav-list-item"]}>
-								<a href="#" className={styles["header__nav-list-link"]}>Contacts</a>
+								<a href="#" className={styles["header__nav-list-link"]}>
+									Contacts
+								</a>
 							</li>
 							<li className={styles["header__nav-list-item"]}>
-								<a href="#" className={styles["header__nav-list-link"]}>Menu</a>
+								<a href="#" className={styles["header__nav-list-link"]}>
+									Menu
+								</a>
 							</li>
 						</ul>
 					</nav>
