@@ -1,3 +1,9 @@
+import { useContext } from "react";
+
+import { userApi } from "../../apis/userApi";
+
+import { AuthContext } from "../../contexts/AuthContext";
+
 import { Container } from "../Container/Container";
 
 import { FiSearch } from "react-icons/fi";
@@ -5,6 +11,8 @@ import { FiSearch } from "react-icons/fi";
 import styles from "./Hero.module.scss";
 
 export const Hero = function () {
+	const { isLogin, setIsLogin, username, setUsername, favorites, setFavorites } = useContext(AuthContext);
+
 	const date = new Date();
 	let dateSup;
 	switch (parseInt(date.toLocaleDateString("en-GB", { day: "numeric" })) % 10) {
@@ -21,6 +29,23 @@ export const Hero = function () {
 			dateSup = "th";
 	}
 
+	const addFavorite = async function (favorite) {
+		try {
+			const { data } = await userApi.post("/auth/favorite", { favorite: favorite }, { withCredentials: true });
+			setFavorites(data.favorites);
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
+	const handleSubmit = function (e) {
+		e.preventDefault();
+
+		const form = e.currentTarget;
+
+		addFavorite(form.elements.search.value);
+	};
+
 	return (
 		<>
 			<section className={styles["hero"]}>
@@ -35,12 +60,12 @@ export const Hero = function () {
 							<sup className={styles["hero__text__sup"]}>{dateSup}</sup>
 						</p>
 					</div>
-					<div className={styles["hero__search"]}>
-						<input autoFocus type="text" placeholder="Search location..." className={styles["hero__search__input"]} />
+					<form onSubmit={handleSubmit} className={styles["hero__search"]}>
+						<input autoFocus type="text" placeholder="Search location..." name="search" className={styles["hero__search__input"]} />
 						<button className={styles["hero__search__button"]}>
 							<FiSearch />
 						</button>
-					</div>
+					</form>
 				</Container>
 			</section>
 		</>

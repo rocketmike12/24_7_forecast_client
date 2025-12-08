@@ -13,7 +13,7 @@ export const WeatherCard = function ({ place }) {
 
 	return (
 		<>
-			<li>{weather}</li>
+			<li>{place}</li>
 		</>
 	);
 };
