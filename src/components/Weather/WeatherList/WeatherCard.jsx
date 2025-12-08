@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import axios from "axios";
+import { weatherApi } from "../../../apis/weatherApi";
 
 import styles from "./WeatherCard.module.scss";
 
@@ -8,12 +9,17 @@ export const WeatherCard = function ({ place }) {
 	const [weather, setWeather] = useState({});
 
 	const getWeather = async function () {
-		// const res = await axios.get("") ;
-	}
+		const { data } = await weatherApi.get("/weather", { params: { q: place } });
+		setWeather(data);
+	};
+
+	useEffect(() => {
+		getWeather();
+	}, []);
 
 	return (
 		<>
-			<li>{place}</li>
+			<li>{JSON.stringify(weather)}</li>
 		</>
 	);
 };
