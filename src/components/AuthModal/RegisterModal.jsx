@@ -12,7 +12,7 @@ export const RegisterModal = function ({ setRole, closeModal }) {
 
 	const registerUser = async function (username, password) {
 		try {
-			const { data } = await userApi.post("/auth/register", { username: username, password: password }, { withCredentials: true });
+			const { data } = await userApi.post("/register", { username: username, password: password }, { withCredentials: true });
 			setIsLogin(true);
 			setUsername(data.username);
 		} catch (err) {

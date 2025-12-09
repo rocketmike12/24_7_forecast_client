@@ -12,7 +12,7 @@ export const LoginModal = function ({ setRole, closeModal }) {
 
 	const loginUser = async function (username, password) {
 		try {
-			const { data } = await userApi.post("/auth/login", { username: username, password: password }, { withCredentials: true });
+			const { data } = await userApi.post("/login", { username: username, password: password }, { withCredentials: true });
 			setIsLogin(true);
 			setUsername(data.username);
 		} catch (err) {

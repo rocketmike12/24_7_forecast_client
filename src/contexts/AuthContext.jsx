@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
 	const getSession = async function () {
 		try {
-			const { data } = await userApi.post("/auth/session", "", { withCredentials: true });
+			const { data } = await userApi.post("/session", "", { withCredentials: true });
 			setIsLogin(true);
 			setUsername(data.username);
 			setFavorites(data.favorites);

@@ -31,7 +31,7 @@ export const Hero = function () {
 
 	const addFavorite = async function (favorite) {
 		try {
-			const { data } = await userApi.post("/auth/favorite", { favorite: favorite }, { withCredentials: true });
+			const { data } = await userApi.post("/favorite", { favorite: favorite }, { withCredentials: true });
 			setFavorites(data.favorites);
 		} catch (err) {
 			console.error(err);

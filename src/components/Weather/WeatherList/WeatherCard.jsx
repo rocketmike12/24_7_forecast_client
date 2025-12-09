@@ -9,7 +9,7 @@ export const WeatherCard = function ({ place }) {
 	const [weather, setWeather] = useState({});
 
 	const getWeather = async function () {
-		const { data } = await weatherApi.get("/weather", { params: { q: place } });
+		const { data } = await weatherApi.get("", { params: { q: place } });
 		setWeather(data);
 	};
 
