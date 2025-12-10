@@ -10,8 +10,8 @@ import { FiSearch } from "react-icons/fi";
 
 import styles from "./Hero.module.scss";
 
-export const Hero = function () {
-	const { isLogin, setIsLogin, username, setUsername, favorites, setFavorites } = useContext(AuthContext);
+export const Hero = function ({ isSearch, openWeather, closeWeather }) {
+	const { setFavorites } = useContext(AuthContext);
 
 	const date = new Date();
 	let dateSup;
@@ -43,7 +43,13 @@ export const Hero = function () {
 
 		const form = e.currentTarget;
 
-		addFavorite(form.elements.search.value);
+		openWeather(form.elements.search.value);
+	};
+
+	const handleChange = function (e) {
+		e.preventDefault();
+
+		if (!e.currentTarget.value) closeWeather();
 	};
 
 	return (
@@ -61,7 +67,7 @@ export const Hero = function () {
 						</p>
 					</div>
 					<form onSubmit={handleSubmit} className={styles["hero__search"]}>
-						<input autoFocus type="text" placeholder="Search location..." name="search" className={styles["hero__search__input"]} />
+						<input onChange={handleChange} autoFocus type="text" placeholder="Search location..." name="search" className={styles["hero__search__input"]} />
 						<button className={styles["hero__search__button"]}>
 							<FiSearch />
 						</button>

@@ -1,9 +1,9 @@
 import { WeatherCard } from "./WeatherCard";
 
-export const WeatherList = function ({ favorites }) {
+export const WeatherList = function ({ places }) {
 	return (
 		<>
-			{favorites.map((place, i) => (
+			{places.map((place, i) => (
 				<WeatherCard place={place} key={i} />
 			))}
 		</>
