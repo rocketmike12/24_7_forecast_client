@@ -16,7 +16,7 @@ export const App = function () {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalRole, setModalRole] = useState("register");
 	const [isSearch, setIsSearch] = useState(false);
-	const [isWeatherOpen, setIsWeatherOpen] = useState(false);
+	const [isForecastOpen, setIsForecastOpen] = useState(false);
 	const [selectedPlace, setSelectedPlace] = useState(null);
 
 	const openModal = function () {
@@ -27,13 +27,13 @@ export const App = function () {
 		setIsModalOpen(false);
 	};
 
-	const openWeather = function (place) {
-		setIsWeatherOpen(true);
+	const openForecast = function (place) {
+		setIsForecastOpen(true);
 		setSelectedPlace(place);
 	};
 
-	const closeWeather = function () {
-		setIsWeatherOpen(false);
+	const closeForecast = function () {
+		setIsForecastOpen(false);
 		setSelectedPlace(null);
 	};
 
@@ -43,9 +43,9 @@ export const App = function () {
 
 			<Header openModal={openModal} />
 
-			<Hero isSearch={isSearch} openWeather={openWeather} closeWeather={closeWeather} />
+			<Hero isSearch={isSearch} openForecast={openForecast} closeForecast={closeForecast} />
 
-			<Weather isOpen={isWeatherOpen} favorites={favorites} selectedPlace={selectedPlace} />
+			<Weather isOpen={isForecastOpen} openForecast={openForecast} closeForecast={closeForecast} favorites={favorites} selectedPlace={selectedPlace} />
 			<News />
 			<Footer />
 		</>

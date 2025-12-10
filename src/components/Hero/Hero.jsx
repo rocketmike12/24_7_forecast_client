@@ -10,7 +10,7 @@ import { FiSearch } from "react-icons/fi";
 
 import styles from "./Hero.module.scss";
 
-export const Hero = function ({ isSearch, openWeather, closeWeather }) {
+export const Hero = function ({ isSearch, openForecast, closeForecast }) {
 	const { setFavorites } = useContext(AuthContext);
 
 	const date = new Date();
@@ -43,13 +43,13 @@ export const Hero = function ({ isSearch, openWeather, closeWeather }) {
 
 		const form = e.currentTarget;
 
-		openWeather(form.elements.search.value);
+		openForecast(form.elements.search.value);
 	};
 
 	const handleChange = function (e) {
 		e.preventDefault();
 
-		if (!e.currentTarget.value) closeWeather();
+		if (!e.currentTarget.value) closeForecast();
 	};
 
 	return (

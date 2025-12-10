@@ -5,11 +5,13 @@ import { WeatherData } from "./WeatherData/WeatherData";
 
 import styles from "./Weather.module.scss";
 
-export const Weather = function ({ isOpen, favorites, selectedPlace }) {
+export const Weather = function ({ isOpen, openForecast, closeForecast, favorites, selectedPlace }) {
 	return (
 		<>
 			<section className={styles["weather"]}>
-				<Container>{favorites.length && !isOpen ? <WeatherList places={favorites} /> : selectedPlace && <WeatherData place={selectedPlace} />}</Container>
+				<Container>
+					{favorites.length && !isOpen ? <WeatherList openForecast={openForecast} closeForecast={closeForecast} places={favorites} /> : selectedPlace && <WeatherData place={selectedPlace} />}
+				</Container>
 			</section>
 		</>
 	);
