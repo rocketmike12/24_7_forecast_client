@@ -7,7 +7,7 @@ import { IoReload } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FaRegTrashCan } from "react-icons/fa6";
 
-import { WeatherIcon } from "../WeatherIcon";
+import { WeatherIcon } from "./WeatherIcon";
 
 import styles from "./WeatherCard.module.scss";
 

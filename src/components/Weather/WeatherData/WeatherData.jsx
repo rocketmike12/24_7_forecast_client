@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { weatherApi } from "../../../apis/weatherApi";
 
-import { WeatherIcon } from "../WeatherIcon";
+import { PiThermometerHotLight } from "react-icons/pi";
+import { PiThermometerColdLight } from "react-icons/pi";
+import { WiHumidity } from "react-icons/wi";
+import { WiBarometer } from "react-icons/wi";
+import { FaRegEye } from "react-icons/fa";
 
 import styles from "./WeatherData.module.scss";
 
@@ -13,7 +17,6 @@ export const WeatherData = function ({ place }) {
 	const getWeather = async function () {
 		const { data } = await weatherApi.get("/weather", { params: { q: place } });
 		setWeather(data);
-		setDate(new Date());
 	};
 
 	const [forecast, setForecast] = useState(null);
@@ -34,8 +37,8 @@ export const WeatherData = function ({ place }) {
 				<ul className={styles["weather-data"]}>
 					<li className={styles["weather-data__item"]}>
 						<h3 className="weather-data__title">Feels like</h3>
-						{weather.main.feels_like}
-						<WeatherIcon />
+						<p>{weather.main.feels_like}</p>
+						{weather.main.feels_like >= 20 ? <PiThermometerHotLight /> : <PiThermometerColdLight />}
 					</li>
 					<li className={styles["weather-data__item"]}>
 						<h3 className="weather-data__title">Min °C</h3>
@@ -46,22 +49,22 @@ export const WeatherData = function ({ place }) {
 					<li className={styles["weather-data__item"]}>
 						<h3 className="weather-data__title">Humidity</h3>
 						<p>{weather.main.humidity}%</p>
-						<WeatherIcon />
+						<WiHumidity />
 					</li>
 					<li className={styles["weather-data__item"]}>
 						<h3 className="weather-data__title">Pressure</h3>
 						<p>{weather.main.pressure} Pa</p>
-						<WeatherIcon />
+						<WiHumidity />
 					</li>
 					<li className={styles["weather-data__item"]}>
 						<h3 className="weather-data__title">Wind speed</h3>
 						<p>{weather.wind.speed} m/s</p>
-						<WeatherIcon />
+						<WiBarometer />
 					</li>
 					<li className={styles["weather-data__item"]}>
 						<h3 className="weather-data__title">Visibility</h3>
 						<p>{weather.visibility}</p>
-						<WeatherIcon />
+						<FaRegEye />
 					</li>
 				</ul>
 			)}
