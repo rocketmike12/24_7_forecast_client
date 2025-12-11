@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { weatherApi } from "../../../apis/weatherApi";
 
+import Chart from "chart.js/auto";
+import { CategoryScale } from "chart.js";
+import { HourlyForecast } from "./HourlyForecast";
+
 import { PiThermometerHotLight } from "react-icons/pi";
 import { PiThermometerColdLight } from "react-icons/pi";
 import { WiHumidity } from "react-icons/wi";
@@ -10,6 +14,8 @@ import { WiBarometer } from "react-icons/wi";
 import { FaRegEye } from "react-icons/fa";
 
 import styles from "./WeatherData.module.scss";
+
+Chart.register(CategoryScale);
 
 export const WeatherData = function ({ place }) {
 	const [weather, setWeather] = useState(null);
@@ -72,7 +78,8 @@ export const WeatherData = function ({ place }) {
 			{forecast && (
 				<>
 					<div className={styles["hourly"]}>
-						<canvas></canvas>
+						<h2>5-day temperature forecast</h2>
+						<HourlyForecast data={forecast.list} />
 					</div>
 
 					<div className={styles["forecast"]}>
