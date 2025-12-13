@@ -1,5 +1,6 @@
 .weather-list {
     display: flex; 
-    padding: 60px;
+    padding: 60px 0;
     gap: 90px;
+    flex-wrap: wrap;
 }

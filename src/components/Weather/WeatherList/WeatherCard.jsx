@@ -63,7 +63,7 @@ export const WeatherCard = function ({ openForecast, closeForecast, delFavorite,
 				<p className={styles["weather-card__temperature"]}>{Math.floor(weather.main.temp)}°C</p>
 
 				<div className={styles["weather-card__button-wrap"]}>
-					<button className={styles["weather-card__update-button"]}>
+					<button onClick={getWeather} className={styles["weather-card__update-button"]}>
 						<IoReload />
 					</button>
 					<button onClick={handleForecast} className={styles["weather-card__forecast-button"]}>
