@@ -9,6 +9,8 @@ import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { HourlyForecast } from "./HourlyForecast";
 
+import { WeeklyForecast } from "./WeeklyForecast";
+
 import { FaHeart } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { PiThermometerHotLight } from "react-icons/pi";
@@ -63,33 +65,33 @@ export const WeatherData = function ({ place, addFavorite }) {
 
 					<ul className={styles["weather-data"]}>
 						<li className={styles["weather-data__item"]}>
-							<h3 className="weather-data__title">Feels like</h3>
+							<h3 className={styles["weather-data__title"]}>Feels like</h3>
 							<p>{weather.main.feels_like}</p>
 							{weather.main.feels_like >= 20 ? <PiThermometerHotLight /> : <PiThermometerColdLight />}
 						</li>
 						<li className={styles["weather-data__item"]}>
-							<h3 className="weather-data__title">Min °C</h3>
+							<h3 className={styles["weather-data__title"]}>Min °C</h3>
 							<p>{weather.main.temp_min}°C</p>
-							<h3 className="weather-data__title">Max °C</h3>
+							<h3 className={styles["weather-data__title"]}>Max °C</h3>
 							<p>{weather.main.temp_max}°C</p>
 						</li>
 						<li className={styles["weather-data__item"]}>
-							<h3 className="weather-data__title">Humidity</h3>
+							<h3 className={styles["weather-data__title"]}>Humidity</h3>
 							<p>{weather.main.humidity}%</p>
 							<WiHumidity />
 						</li>
 						<li className={styles["weather-data__item"]}>
-							<h3 className="weather-data__title">Pressure</h3>
+							<h3 className={styles["weather-data__title"]}>Pressure</h3>
 							<p>{weather.main.pressure} Pa</p>
 							<WiHumidity />
 						</li>
 						<li className={styles["weather-data__item"]}>
-							<h3 className="weather-data__title">Wind speed</h3>
+							<h3 className={styles["weather-data__title"]}>Wind speed</h3>
 							<p>{weather.wind.speed} m/s</p>
 							<WiBarometer />
 						</li>
 						<li className={styles["weather-data__item"]}>
-							<h3 className="weather-data__title">Visibility</h3>
+							<h3 className={styles["weather-data__title"]}>Visibility</h3>
 							<p>{weather.visibility}</p>
 							<FaRegEye />
 						</li>
@@ -100,12 +102,12 @@ export const WeatherData = function ({ place, addFavorite }) {
 			{forecast && (
 				<>
 					<div className={styles["hourly"]}>
-						<h2>5-day temperature forecast</h2>
+						<h2 className={styles["hourly__title"]}>5-day temperature forecast</h2>
 						<HourlyForecast data={forecast.list} />
 					</div>
 
 					<div className={styles["forecast"]}>
-						<ul className={styles["forecast__list"]}></ul>
+						<WeeklyForecast data={forecast.list} />
 					</div>
 				</>
 			)}

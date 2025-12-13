@@ -4,6 +4,8 @@ import { Line } from "react-chartjs-2";
 
 import { colors } from "../../../data/colors";
 
+import styles from "./WeatherData.module.scss";
+
 export const HourlyForecast = function ({ data }) {
 	const [chartData, setChartData] = useState({
 		labels: data.map((el) => el.dt_txt),
@@ -19,7 +21,7 @@ export const HourlyForecast = function ({ data }) {
 	});
 
 	return (
-		<div className="chart-container">
+		<div className={styles["hourly__chart-container"]}>
 			<Line
 				data={chartData}
 				options={{

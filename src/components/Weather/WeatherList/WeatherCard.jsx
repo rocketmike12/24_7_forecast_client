@@ -60,7 +60,7 @@ export const WeatherCard = function ({ openForecast, closeForecast, delFavorite,
 
 				<img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`} className={styles["weather-card__img"]} />
 
-				<p className={styles["weather-card__temperature"]}>{Math.floor(weather.main.temp)}°C</p>
+				<p className={styles["weather-card__temperature"]}>{weather.main.temp}°C</p>
 
 				<div className={styles["weather-card__button-wrap"]}>
 					<button onClick={getWeather} className={styles["weather-card__update-button"]}>
