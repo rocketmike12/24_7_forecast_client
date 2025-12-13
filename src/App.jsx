@@ -11,8 +11,6 @@ import { Footer } from "./components/Footer/Footer";
 import { AuthModal } from "./components/AuthModal/AuthModal";
 
 export const App = function () {
-	const { favorites } = useContext(AuthContext);
-
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalRole, setModalRole] = useState("register");
 	const [isSearch, setIsSearch] = useState(false);
@@ -45,7 +43,7 @@ export const App = function () {
 
 			<Hero isSearch={isSearch} openForecast={openForecast} closeForecast={closeForecast} />
 
-			<Weather isOpen={isForecastOpen} openForecast={openForecast} closeForecast={closeForecast} favorites={favorites} selectedPlace={selectedPlace} />
+			<Weather isOpen={isForecastOpen} openForecast={openForecast} closeForecast={closeForecast} selectedPlace={selectedPlace} />
 			<News />
 			<Footer />
 		</>

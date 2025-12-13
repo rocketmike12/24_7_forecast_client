@@ -11,8 +11,6 @@ import { FiSearch } from "react-icons/fi";
 import styles from "./Hero.module.scss";
 
 export const Hero = function ({ isSearch, openForecast, closeForecast }) {
-	const { setFavorites } = useContext(AuthContext);
-
 	const date = new Date();
 	let dateSup;
 	switch (parseInt(date.toLocaleDateString("en-GB", { day: "numeric" })) % 10) {
@@ -29,20 +27,12 @@ export const Hero = function ({ isSearch, openForecast, closeForecast }) {
 			dateSup = "th";
 	}
 
-	const addFavorite = async function (favorite) {
-		try {
-			const { data } = await userApi.post("/favorite", { favorite: favorite }, { withCredentials: true });
-			setFavorites(data.favorites);
-		} catch (err) {
-			console.error(err);
-		}
-	};
-
 	const handleSubmit = function (e) {
 		e.preventDefault();
 
 		const form = e.currentTarget;
 
+		closeForecast();
 		openForecast(form.elements.search.value);
 	};
 

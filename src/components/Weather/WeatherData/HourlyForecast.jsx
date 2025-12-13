@@ -30,6 +30,11 @@ export const HourlyForecast = function ({ data }) {
 						legend: {
 							display: false
 						}
+					},
+					elements: {
+						point: {
+							radius: 0
+						}
 					}
 				}}
 			/>
