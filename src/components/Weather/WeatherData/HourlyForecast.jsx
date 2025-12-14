@@ -8,7 +8,7 @@ import styles from "./WeatherData.module.scss";
 
 export const HourlyForecast = function ({ data }) {
 	const [chartData, setChartData] = useState({
-		labels: data.map((el) => el.dt_txt),
+		labels: data.map((el) => el.dt_txt.split(" ")[1]),
 		datasets: [
 			{
 				label: "",
@@ -21,7 +21,7 @@ export const HourlyForecast = function ({ data }) {
 	});
 
 	return (
-		<div className={styles["hourly__chart-container"]}>
+		<div className={styles["weather-data__hourly__chart-container"]}>
 			<Line
 				data={chartData}
 				options={{

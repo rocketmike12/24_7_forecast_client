@@ -1,0 +1,147 @@
+@import "../../../sass/base/base.scss";
+
+.weather-data {
+	padding: 60px 0;
+
+	&__location {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&__city {
+			@include typography(inherit, 500, Medium, 32px, 100%, 0%, _);
+		}
+
+		&__favorite-button {
+			padding: 10px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			background-color: $bg-light;
+
+			& > svg {
+				width: 24px;
+				height: 24px;
+
+				fill: $accent-light;
+			}
+
+			&:hover > svg {
+				width: 24px;
+				height: 24px;
+
+				fill: $fg-light;
+			}
+		}
+	}
+
+	&__list {
+		margin-top: 40px;
+		padding: 40px;
+		border-radius: 20px;
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px;
+
+		background-color: $card-bg-light;
+
+		&__item {
+			padding: 20px;
+			border-radius: 20px;
+
+			width: 326px;
+
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: column;
+
+			background-color: $card-bg-darker-light;
+
+			& > svg {
+				width: 85px;
+				height: 85px;
+			}
+		}
+
+		&__title {
+			@include typography(inherit, 500, Medium, 16px, 100%, 0%, center);
+		}
+
+		&__data {
+			@include typography(inherit, 500, Medium, 32px, 100%, 0%, center);
+		}
+	}
+
+	&__hourly {
+		margin-top: 40px;
+		padding: 40px;
+
+		border-radius: 20px;
+
+		background-color: $card-bg-light;
+
+		&__title {
+			@include typography(inherit, 600, Medium, 16px, 100%, 0%, _);
+
+			margin-bottom: 20px;
+		}
+	}
+
+	&__weekly {
+		margin-top: 40px;
+
+		&-list {
+			padding: 40px;
+			border-radius: 20px;
+
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			background-color: $card-bg-light;
+
+			&__item {
+				padding: 16px 32px;
+
+				border-radius: 20px;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				background-color: $card-bg-darker-light;
+
+				&__date {
+					@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+					width: 120px;
+				}
+
+				&__middle-wrap {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				}
+
+				&__img {
+					width: 45px;
+					height: 45px;
+				}
+
+				&__temperature {
+					@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+				}
+
+				&__weather {
+					width: 200px;
+
+					@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+				}
+			}
+		}
+	}
+}

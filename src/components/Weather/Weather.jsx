@@ -39,7 +39,7 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 					{favorites.length && !isOpen ? (
 						<WeatherList openForecast={openForecast} closeForecast={closeForecast} delFavorite={delFavorite} places={favorites} />
 					) : (
-						selectedPlace && <WeatherData addFavorite={addFavorite} place={selectedPlace} />
+						selectedPlace && <WeatherData addFavorite={addFavorite} delFavorite={delFavorite} place={selectedPlace} />
 					)}
 				</Container>
 			</section>
