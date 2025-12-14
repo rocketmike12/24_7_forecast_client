@@ -55,12 +55,12 @@ export const RegisterModal = function ({ setRole, closeModal }) {
 						<input type="text" name="username" placeholder="Username" className={styles["modal__input"]} />
 					</div>
 
-					<div className={styles["modal__input-wrap"]}>
-						<label htmlFor="email" className={styles["modal__input-label"]}>
-							Email
-						</label>
-						<input type="text" name="email" placeholder="Email" className={styles["modal__input"]} />
-					</div>
+					{/* <div className={styles["modal__input-wrap"]}> */}
+					{/* 	<label htmlFor="email" className={styles["modal__input-label"]}> */}
+					{/* 		Email */}
+					{/* 	</label> */}
+					{/* 	<input type="text" name="email" placeholder="Email" className={styles["modal__input"]} /> */}
+					{/* </div> */}
 
 					<div className={styles["modal__input-wrap"]}>
 						<label htmlFor="password" className={styles["modal__input-label"]}>

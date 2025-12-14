@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -12,6 +12,8 @@ import { WeatherData } from "./WeatherData/WeatherData";
 import styles from "./Weather.module.scss";
 
 export const Weather = function ({ isOpen, openForecast, closeForecast, selectedPlace }) {
+	const [reloadComponent, setReloadComponent] = useState(null);
+
 	const { favorites, setFavorites } = useContext(AuthContext);
 
 	const addFavorite = async function (favorite) {
@@ -31,6 +33,10 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 			console.error(err);
 		}
 	};
+
+	useEffect(() => {
+		setReloadComponent(favorites);
+	}, [favorites]);
 
 	return (
 		<>

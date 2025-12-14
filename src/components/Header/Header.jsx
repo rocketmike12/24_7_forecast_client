@@ -13,13 +13,14 @@ import logo from "../../img/logo.svg";
 import styles from "./Header.module.scss";
 
 export const Header = function ({ openModal }) {
-	const { isLogin, setIsLogin, username, setUsername } = useContext(AuthContext);
+	const { isLogin, setIsLogin, username, setUsername, setFavorites } = useContext(AuthContext);
 
 	const logoutUser = async function () {
 		try {
 			await userApi.post("/logout", "", { withCredentials: true });
 			setIsLogin(false);
 			setUsername(null);
+			setFavorites([])
 		} catch (err) {
 			console.error(err);
 		}
