@@ -1,10 +1,9 @@
 @import "../../sass/base/base.scss";
 
 .header {
-	& > div {
-		padding-top: 12px;
-		padding-bottom: 12px;
+	padding: 12px 0;
 
+	& > div {
 		display: flex;
 		align-items: center;
 	}

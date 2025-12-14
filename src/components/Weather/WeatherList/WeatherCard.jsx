@@ -6,7 +6,7 @@ import { weatherApi } from "../../../apis/weatherApi";
 import { IoReload } from "react-icons/io5";
 import { FaRegTrashCan } from "react-icons/fa6";
 
-import styles from "./WeatherCard.module.scss";
+import styles from "./WeatherList.module.scss";
 
 export const WeatherCard = function ({ openForecast, closeForecast, delFavorite, place }) {
 	const [date, setDate] = useState(new Date());
