@@ -37,36 +37,38 @@ export const News = function () {
 							<ul className={styles["news-list"]}>
 								{news.slice(currentPage * 4, (currentPage + 1) * 4).map((el) => (
 									<>
-										<li className={styles["news-list__item"]}>
-											<div className={styles["news-list__item__img-container"]} style={{ backgroundImage: `url("${el.urlToImage}")` }}>
-												<img src={el.urlToImage} alt="article image" className={styles["news-list__item__img"]} />
-											</div>
-											<p className={styles["news-list__item__title"]}>{el.title}</p>
-										</li>
+										<a href={el.url} target="_blank" className={styles["news-list__link"]}>
+											<li className={styles["news-list__item"]}>
+												<div className={styles["news-list__item__img-container"]} style={{ backgroundImage: `url("${el.urlToImage}")` }}>
+													<img src={el.urlToImage} alt="article image" className={styles["news-list__item__img"]} />
+												</div>
+												<p className={styles["news-list__item__title"]}>{el.title}</p>
+											</li>
+										</a>
 									</>
 								))}
 							</ul>
-							{currentPage == 0 ? (
-								<button disabled className={styles["news__scroll-btn"]}>
-									{"<"}
-								</button>
-							) : (
-								<button onClick={scrollBackward} className={styles["news__scroll-btn"]}>
-									{"<"}
-								</button>
-							)}
-
-							<p className="news__current-page">{currentPage}</p>
-
-							{currentPage == news.length ? (
-								<button disabled className={styles["news__scroll-btn"]}>
-									{">"}
-								</button>
-							) : (
-								<button onClick={scrollForward} className={styles["news__scroll-btn"]}>
-									{">"}
-								</button>
-							)}
+							<div className={styles["news__button-wrap"]}>
+								{currentPage == 0 ? (
+									<button disabled className={styles["news__scroll-button"]}>
+										{"<"}
+									</button>
+								) : (
+									<button onClick={scrollBackward} className={styles["news__scroll-button"]}>
+										{"<"}
+									</button>
+								)}
+								<p className={styles["news__current-page"]}>{currentPage}</p>
+								{currentPage >= (news.length - 4) / 4 ? (
+									<button disabled className={styles["news__scroll-button"]}>
+										{">"}
+									</button>
+								) : (
+									<button onClick={scrollForward} className={styles["news__scroll-button"]}>
+										{">"}
+									</button>
+								)}
+							</div>
 						</>
 					)}
 				</Container>

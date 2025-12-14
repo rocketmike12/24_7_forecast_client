@@ -13,6 +13,11 @@
 		display: flex;
 		gap: 20px;
 
+		&__link {
+			text-decoration: none;
+			color: $fg-light;
+		}
+
 		&__item {
 			width: 270px;
 
@@ -35,9 +40,36 @@
 			&__title {
 				margin-top: 20px;
 				width: 100%;
+				height: 5em;
 
 				@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+				color: $fg-light;
 			}
+		}
+	}
+
+	&__button-wrap {
+		margin-top: 20px;
+		width: 120px;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__scroll-button {
+		width: 40px;
+		height: 40px;
+
+		border-radius: 10px;
+
+		@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+		background-color: $accent-light;
+		color: $fg-light;
+
+		&:disabled {
+			background-color: rgba($accent-light, 80%);
+			cursor: not-allowed;
 		}
 	}
 }
