@@ -1,1 +1,53 @@
 @import "../../sass/base/base.scss";
+
+.footer {
+	padding: 40px 0;
+
+	color: $footer-fg;
+	background-color: $footer-bg;
+
+	& > div {
+		display: flex;
+		gap: 100px;
+	}
+
+	&__logo {
+		width: 90;
+		height: 62;
+		filter: invert(1);
+	}
+
+	&__address {
+		&__title {
+			@include typography(Montserrat Alternates, 500, Medium, 16px, 100%, 0%, _);
+		}
+
+		&__text {
+			margin-top: 10px;
+
+			@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+		}
+	}
+
+	&__contacts {
+		&__title {
+			@include typography(Montserrat Alternates, 500, Medium, 16px, 100%, 0%, _);
+		}
+
+		&__list {
+			margin-top: 10px;
+            
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+			&__item {
+				& > a > svg {
+                    width: 40px;
+                    height: 40px;
+					fill: $footer-fg;
+				}
+			}
+		}
+	}
+}

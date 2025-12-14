@@ -58,7 +58,7 @@ export const News = function () {
 										{"<"}
 									</button>
 								)}
-								<p className={styles["news__current-page"]}>{currentPage}</p>
+								<p className={styles["news__current-page"]}>{currentPage + 1}</p>
 								{currentPage >= (news.length - 4) / 4 ? (
 									<button disabled className={styles["news__scroll-button"]}>
 										{">"}
