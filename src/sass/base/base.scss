@@ -2,6 +2,11 @@
 @import "../../sass/utils/mixins.scss";
 @import "../../sass/utils/variables.scss";
 
+* {
+    transition: 200ms;
+    transition-property: transform;
+}
+
 body {
     font-family: Montserrat;
 }

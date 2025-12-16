@@ -1,27 +1,63 @@
 @import "../../sass/base/base.scss";
 
 .header {
-	padding: 12px 0;
+	padding: 14px 0;
+
+	position: relative;
 
 	& > div {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 	}
 
-	&__icon {
-		width: 82px;
-		height: 56px;
+	&__logo {
+		width: 34px;
+		height: 22px;
+	}
+
+	&__menu__button {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+		@include typography(Montserrat Alternates, 500, Medium, 10px, 100%, 0%, _);
+
+		color: $fg-light;
+		background-color: transparent;
+
+        &.is-open > svg {
+            transform: rotate(90deg);
+        }
+	}
+
+	&__menu__wrap {
+		position: absolute;
+		top: 50px;
+		left: 0;
+
+		padding: 30px 0;
+
+		width: 100%;
+
+		background-color: $header-bg-light;
+
+		& > div {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
 	}
 
 	&__nav {
-		margin-left: 111px;
+		height: 117px;
 
 		&-list {
-			width: 262px;
+			height: 100%;
 
 			display: flex;
-			align-items: center;
-			gap: 42px;
+			justify-content: space-between;
+			flex-direction: column;
 
 			&-link {
 				text-decoration: none;
@@ -37,7 +73,8 @@
 
 		display: flex;
 		align-items: center;
-		gap: 27px;
+		flex-direction: column-reverse;
+		gap: 15px;
 
 		&-username {
 			@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
@@ -56,8 +93,136 @@
 		}
 
 		&-img {
-			width: 50px;
-			height: 50px;
+			width: 40px;
+			height: 40px;
+		}
+	}
+}
+
+@include tab() {
+	.header {
+		padding: 12px 0;
+
+		& > div {
+			display: flex;
+			align-items: center;
+		}
+
+		&__logo {
+			width: 82px;
+			height: 56px;
+		}
+
+		&__nav {
+			margin-left: 111px;
+
+			&-list {
+				width: 262px;
+
+				display: flex;
+				align-items: center;
+				gap: 42px;
+
+				&-link {
+					text-decoration: none;
+
+					@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+					color: $fg-light;
+				}
+			}
+		}
+
+		&__profile {
+			margin-left: auto;
+
+			display: flex;
+			align-items: center;
+			gap: 27px;
+
+			&-username {
+				@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+				color: $fg-light;
+			}
+
+			&-button {
+				width: 89px;
+				height: 35px;
+
+				border-radius: 10px;
+
+				@include typography(inherit, 500, Medium, 12px, 100%, 0%, _);
+				color: $fg-light;
+				background-color: $accent-light;
+			}
+
+			&-img {
+				width: 50px;
+				height: 50px;
+			}
+		}
+	}
+}
+
+@include desk() {
+	.header {
+		padding: 12px 0;
+
+		& > div {
+			display: flex;
+			align-items: center;
+		}
+
+		&__logo {
+			width: 82px;
+			height: 56px;
+		}
+
+		&__nav {
+			margin-left: 111px;
+
+			&-list {
+				width: 262px;
+
+				display: flex;
+				align-items: center;
+				gap: 42px;
+
+				&-link {
+					text-decoration: none;
+
+					@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+					color: $fg-light;
+				}
+			}
+		}
+
+		&__profile {
+			margin-left: auto;
+
+			display: flex;
+			align-items: center;
+			gap: 27px;
+
+			&-username {
+				@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+				color: $fg-light;
+			}
+
+			&-button {
+				width: 89px;
+				height: 35px;
+
+				border-radius: 10px;
+
+				@include typography(inherit, 500, Medium, 12px, 100%, 0%, _);
+				color: $fg-light;
+				background-color: $accent-light;
+			}
+
+			&-img {
+				width: 50px;
+				height: 50px;
+			}
 		}
 	}
 }

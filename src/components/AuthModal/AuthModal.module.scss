@@ -63,7 +63,7 @@
 			border-radius: 10px;
 
 			@include typography(Montserrat, 500, Medium, 12px, 100%, 0%, _);
-			color: $input-fg-light;
+			color: $fg-light;
 			background-color: $input-bg-light;
 
 			&::placeholder {
