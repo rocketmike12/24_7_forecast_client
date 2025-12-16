@@ -5,6 +5,10 @@
 
 	position: relative;
 
+	z-index: 2;
+
+	background-color: $bg-light;
+
 	& > div {
 		display: flex;
 		align-items: center;
@@ -17,21 +21,25 @@
 	}
 
 	&__menu__button {
-        display: flex;
-        align-items: center;
-        gap: 5px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
 
 		@include typography(Montserrat Alternates, 500, Medium, 10px, 100%, 0%, _);
 
 		color: $fg-light;
 		background-color: transparent;
 
-        &.is-open > svg {
-            transform: rotate(90deg);
-        }
+		&.is-open > svg {
+			transform: rotate(90deg);
+		}
 	}
 
 	&__menu__wrap {
+		z-index: 1;
+
+		transform: translateY(-100%);
+
 		position: absolute;
 		top: 50px;
 		left: 0;
@@ -41,6 +49,12 @@
 		width: 100%;
 
 		background-color: $header-bg-light;
+
+		&.is-open {
+			display: block;
+
+			transform: translateY(0);
+		}
 
 		& > div {
 			display: flex;

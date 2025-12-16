@@ -50,52 +50,50 @@ export const Header = function ({ openModal }) {
 					>
 						Menu <MdOutlineKeyboardArrowRight />
 					</button>
-
-					{isMenuOpen && (
-						<div className={styles["header__menu__wrap"]}>
-							<Container>
-								<nav className={styles["header__nav"]}>
-									<ul className={styles["header__nav-list"]}>
-										<li className={styles["header__nav-list-item"]}>
-											<a href="#" className={styles["header__nav-list-link"]}>
-												Who we are
-											</a>
-										</li>
-										<li className={styles["header__nav-list-item"]}>
-											<a href="#" className={styles["header__nav-list-link"]}>
-												Contacts
-											</a>
-										</li>
-										<li className={styles["header__nav-list-item"]}>
-											<a href="#" className={styles["header__nav-list-link"]}>
-												Menu
-											</a>
-										</li>
-									</ul>
-								</nav>
-								<div className={styles["header__profile"]}>
-									{isLogin && (
-										<>
-											<p className={styles["header__profile-username"]}>{username}</p>
-											<button className={styles["header__profile-button"]} onClick={handleLogout}>
-												Log out
-											</button>
-										</>
-									)}
-
-									{!isLogin && (
-										<button className={styles["header__profile-button"]} onClick={openModal}>
-											Sign Up
-										</button>
-									)}
-
-									<img src={profileImg} alt="user" className={styles["header__profile-img"]} />
-								</div>
-							</Container>
-						</div>
-					)}
 				</Container>
 			</header>
+
+			<div className={`${styles["header__menu__wrap"]} ${isMenuOpen ? styles["is-open"] : ""}`}>
+				<Container>
+					<nav className={styles["header__nav"]}>
+						<ul className={styles["header__nav-list"]}>
+							<li className={styles["header__nav-list-item"]}>
+								<a href="#" className={styles["header__nav-list-link"]}>
+									Who we are
+								</a>
+							</li>
+							<li className={styles["header__nav-list-item"]}>
+								<a href="#" className={styles["header__nav-list-link"]}>
+									Contacts
+								</a>
+							</li>
+							<li className={styles["header__nav-list-item"]}>
+								<a href="#" className={styles["header__nav-list-link"]}>
+									Menu
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div className={styles["header__profile"]}>
+						{isLogin && (
+							<>
+								<p className={styles["header__profile-username"]}>{username}</p>
+								<button className={styles["header__profile-button"]} onClick={handleLogout}>
+									Log out
+								</button>
+							</>
+						)}
+
+						{!isLogin && (
+							<button className={styles["header__profile-button"]} onClick={openModal}>
+								Sign Up
+							</button>
+						)}
+
+						<img src={profileImg} alt="user" className={styles["header__profile-img"]} />
+					</div>
+				</Container>
+			</div>
 		</>
 	);
 };
