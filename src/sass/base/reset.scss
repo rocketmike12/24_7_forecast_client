@@ -7,9 +7,12 @@ button {
 }
 
 a,
-input,
+
 button {
 	cursor: pointer;
+}
+input {
+    cursor: text;
 }
 
 ul,
