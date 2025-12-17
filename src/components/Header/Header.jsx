@@ -46,51 +46,90 @@ export const Header = function ({ openModal }) {
 						onClick={() => {
 							setIsMenuOpen(!isMenuOpen);
 						}}
-						className={`${styles["header__menu__button"]} ${isMenuOpen ? styles["is-open"] : ""}`}
+						className={`${styles["header__mob-menu__button"]} ${isMenuOpen ? styles["is-open"] : ""}`}
 					>
 						Menu <MdOutlineKeyboardArrowRight />
 					</button>
-				</Container>
-			</header>
 
-			<div className={`${styles["mob__menu"]} ${isMenuOpen ? styles["is-open"] : ""}`}>
-				<Container>
-					<nav className={styles["mob__menu__nav"]}>
-						<ul className={styles["mob__menu__nav-list"]}>
-							<li className={styles["mob__menu__nav-list-item"]}>
-								<a href="#" className={styles["mob__menu__nav-list-link"]}>
+					<nav className={styles["header__nav"]}>
+						<ul className={styles["header__nav__list"]}>
+							<li className={styles["header__nav__list__item"]}>
+								<a href="#" className={styles["header__nav__list__link"]}>
 									Who we are
 								</a>
 							</li>
-							<li className={styles["mob__menu__nav-list-item"]}>
-								<a href="#" className={styles["mob__menu__nav-list-link"]}>
+							<li className={styles["header__nav__list__item"]}>
+								<a href="#" className={styles["header__nav__list__link"]}>
 									Contacts
 								</a>
 							</li>
-							<li className={styles["mob__menu__nav-list-item"]}>
-								<a href="#" className={styles["mob__menu__nav-list-link"]}>
+							<li className={styles["header__nav__list__item"]}>
+								<a href="#" className={styles["header__nav__list__link"]}>
 									Menu
 								</a>
 							</li>
 						</ul>
 					</nav>
-					<div className={styles["mob__menu__profile"]}>
+
+					<div className={styles["header__profile"]}>
 						{isLogin && (
 							<>
-								<p className={styles["mob__menu__profile-username"]}>{username}</p>
-								<button className={styles["mob__menu__profile-button"]} onClick={handleLogout}>
+								<p className={styles["header__profile__username"]}>{username}</p>
+								<button className={styles["header__profile__button"]} onClick={handleLogout}>
 									Log out
 								</button>
 							</>
 						)}
 
 						{!isLogin && (
-							<button className={styles["mob__menu__profile-button"]} onClick={openModal}>
+							<button className={styles["header__profile__button"]} onClick={openModal}>
 								Sign Up
 							</button>
 						)}
 
-						<img src={profileImg} alt="user" className={styles["mob__menu__profile-img"]} />
+						<img src={profileImg} alt="user" className={styles["header__profile__img"]} />
+					</div>
+				</Container>
+			</header>
+
+			<div className={`${styles["mob-menu"]} ${isMenuOpen ? styles["is-open"] : ""}`}>
+				<Container>
+					<nav className={styles["mob-menu__nav"]}>
+						<ul className={styles["mob-menu__nav__list"]}>
+							<li className={styles["mob-menu__nav__list__item"]}>
+								<a href="#" className={styles["mob-menu__nav__list__link"]}>
+									Who we are
+								</a>
+							</li>
+							<li className={styles["mob-menu__nav__list__item"]}>
+								<a href="#" className={styles["mob-menu__nav__list__link"]}>
+									Contacts
+								</a>
+							</li>
+							<li className={styles["mob-menu__nav__list__item"]}>
+								<a href="#" className={styles["mob-menu__nav__list__link"]}>
+									Menu
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div className={styles["mob-menu__profile"]}>
+						{isLogin && (
+							<>
+								<p className={styles["mob-menu__profile__username"]}>{username}</p>
+								<button className={styles["mob-menu__profile__button"]} onClick={handleLogout}>
+									Log out
+								</button>
+							</>
+						)}
+
+						{!isLogin && (
+							<button className={styles["mob-menu__profile__button"]} onClick={openModal}>
+								Sign Up
+							</button>
+						)}
+
+						<img src={profileImg} alt="user" className={styles["mob-menu__profile__img"]} />
 					</div>
 				</Container>
 			</div>

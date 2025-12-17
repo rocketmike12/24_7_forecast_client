@@ -20,7 +20,7 @@
 		height: 22px;
 	}
 
-	&__menu__button {
+	&__mob-menu__button {
 		display: flex;
 		align-items: center;
 		gap: 5px;
@@ -35,45 +35,51 @@
 		}
 	}
 
-	&__menu__wrap {
-		z-index: 1;
+	&__nav {
+		display: none;
+	}
 
-		transform: translateY(-100%);
+	&__profile {
+		display: none;
+	}
+}
 
-		position: absolute;
-		top: 50px;
-		left: 0;
+.mob-menu {
+	z-index: 1;
 
-		padding: 30px 0;
+	transform: translateY(-100%);
 
-		width: 100%;
+	position: absolute;
+	top: 50px;
+	left: 0;
 
-		background-color: $header-bg-light;
+	padding: 30px 0;
 
-		&.is-open {
-			display: block;
+	width: 100%;
 
-			transform: translateY(0);
-		}
+	background-color: $header-bg-light;
 
-		& > div {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
+	&.is-open {
+		transform: translateY(0);
+	}
+
+	& > div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	&__nav {
 		height: 117px;
 
-		&-list {
+		&__list {
 			height: 100%;
 
 			display: flex;
 			justify-content: space-between;
 			flex-direction: column;
 
-			&-link {
+			&__link {
 				text-decoration: none;
 
 				@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
@@ -90,12 +96,12 @@
 		flex-direction: column-reverse;
 		gap: 15px;
 
-		&-username {
+		&__username {
 			@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
 			color: $fg-light;
 		}
 
-		&-button {
+		&__button {
 			width: 89px;
 			height: 35px;
 
@@ -106,7 +112,7 @@
 			background-color: $accent-light;
 		}
 
-		&-img {
+		&__img {
 			width: 40px;
 			height: 40px;
 		}
@@ -123,24 +129,30 @@
 		}
 
 		&__logo {
-			width: 82px;
-			height: 56px;
+			width: 54px;
+			height: 36px;
+		}
+
+		&__mob-menu__button {
+			display: none;
 		}
 
 		&__nav {
-			margin-left: 111px;
+			display: block;
 
-			&-list {
+			margin-left: 57px;
+
+			&__list {
 				width: 262px;
 
 				display: flex;
 				align-items: center;
 				gap: 42px;
 
-				&-link {
+				&__link {
 					text-decoration: none;
 
-					@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+					@include typography(Montserrat Alternates, 500, Medium, 10px, 100%, 0%, _);
 					color: $fg-light;
 				}
 			}
@@ -151,40 +163,39 @@
 
 			display: flex;
 			align-items: center;
-			gap: 27px;
+			gap: 25px;
 
-			&-username {
-				@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
+			&__username {
+				@include typography(Montserrat Alternates, 500, Medium, 10px, 100%, 0%, _);
 				color: $fg-light;
 			}
 
-			&-button {
-				width: 89px;
-				height: 35px;
+			&__button {
+				width: 73px;
+				height: 28px;
 
 				border-radius: 10px;
 
-				@include typography(inherit, 500, Medium, 12px, 100%, 0%, _);
+				@include typography(inherit, 500, Medium, 10px, 100%, 0%, _);
 				color: $fg-light;
 				background-color: $accent-light;
 			}
 
-			&-img {
-				width: 50px;
-				height: 50px;
+			&__img {
+				width: 40px;
+				height: 40px;
 			}
 		}
+	}
+
+	.mob-menu {
+		display: none;
 	}
 }
 
 @include desk() {
 	.header {
 		padding: 12px 0;
-
-		& > div {
-			display: flex;
-			align-items: center;
-		}
 
 		&__logo {
 			width: 82px;
@@ -194,46 +205,26 @@
 		&__nav {
 			margin-left: 111px;
 
-			&-list {
-				width: 262px;
-
-				display: flex;
-				align-items: center;
-				gap: 42px;
-
-				&-link {
-					text-decoration: none;
-
+			&__list {
+				&__link {
 					@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
-					color: $fg-light;
 				}
 			}
 		}
 
 		&__profile {
-			margin-left: auto;
-
-			display: flex;
-			align-items: center;
-			gap: 27px;
-
-			&-username {
+			&__username {
 				@include typography(Montserrat Alternates, 500, Medium, 12px, 100%, 0%, _);
-				color: $fg-light;
 			}
 
-			&-button {
+			&__button {
 				width: 89px;
 				height: 35px;
 
-				border-radius: 10px;
-
 				@include typography(inherit, 500, Medium, 12px, 100%, 0%, _);
-				color: $fg-light;
-				background-color: $accent-light;
 			}
 
-			&-img {
+			&__img {
 				width: 50px;
 				height: 50px;
 			}
