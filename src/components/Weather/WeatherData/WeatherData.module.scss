@@ -8,7 +8,7 @@
 		align-items: center;
 
 		&__city {
-			@include typography(inherit, 500, Medium, 32px, 100%, 0%, _);
+			@include typography(inherit, 500, Medium, 20px, 100%, 0%, _);
 		}
 
 		&__favorite-button {
@@ -21,8 +21,8 @@
 			background-color: $bg-light;
 
 			& > svg {
-				width: 24px;
-				height: 24px;
+				width: 16px;
+				height: 16px;
 
 				fill: $accent-light;
 			}
@@ -148,6 +148,36 @@
 
 @include tab() {
 	.weather-data {
+		&__location {
+			&__city {
+				@include typography(inherit, 500, Medium, 32px, 100%, 0%, _);
+			}
+
+			&__favorite-button {
+				padding: 10px;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				background-color: $bg-light;
+
+				& > svg {
+					width: 24px;
+					height: 24px;
+
+					fill: $accent-light;
+				}
+
+				&:hover > svg {
+					width: 24px;
+					height: 24px;
+
+					fill: $fg-light;
+				}
+			}
+		}
+
 		&__list {
 			margin-top: 40px;
 
