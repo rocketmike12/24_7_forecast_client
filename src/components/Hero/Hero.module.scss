@@ -1,7 +1,7 @@
 @import "../../sass/base/base.scss";
 
 .hero {
-	padding: 100px 0;
+	padding: 50px 0;
 
 	background: linear-gradient(0deg, #0000007a, #0000007a), url("../../img/hero_bg.jpg");
 	background-size: cover;
@@ -11,11 +11,11 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		gap: 80px;
+		gap: 40px;
 	}
 
 	&__title {
-		@include typography(inherit, 600, SemiBold, 40px, 100%, 0%, center);
+		@include typography(inherit, 600, SemiBold, 20px, 100%, 0%, center);
 		color: $hero-fg;
 	}
 
@@ -23,41 +23,37 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
+
+		width: 100%;
+
+		border-left: 3px solid $hero-fg;
 	}
 
 	&__text {
-		min-width: 216px; // 164 + 52
-
-		padding-left: 52px;
+		padding-left: 25px;
 		padding-top: 16px;
 		padding-bottom: 16px;
 
-		margin-right: 183px;
+		margin-right: auto;
 
-		@include typography(inherit, 500, Medium, 24px, 100%, 0%, left);
+		@include typography(inherit, 500, Medium, 14px, 100%, 0%, _);
 		color: $hero-fg;
 
 		&:first-child {
-			width: 397px; // 345 + 52
-
-			padding-right: 52px;
-			padding-left: 0;
-
-			margin-right: 0;
-
-			border-right: 3px solid $hero-fg;
-
-			@include typography(inherit, 500, Medium, 24px, 100%, 0%, right);
+			@include typography(inherit, 500, Medium, 14px, 100%, 0%, _);
 		}
 
 		&__sup {
-			@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+			@include typography(inherit, 500, Medium, 8px, 100%, 0%, _);
+			vertical-align: top;
+			top: 0;
 		}
 	}
 
 	&__search {
-		width: 625px;
-		height: 42px;
+		height: 32px;
+		width: 100%;
 
 		display: flex;
 		justify-content: center;
@@ -65,18 +61,18 @@
 
 		&__input {
 			height: 100%;
-			width: 580px;
+			width: 100%;
 
-			padding: 12px 29px;
+			padding: 10px 25px;
 
 			border-radius: 10px 0 0 10px;
 
-			@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
+			@include typography(Montserrat, 500, Medium, 10px, 100%, 0%, _);
 
 			background-color: $hero-input-bg-light;
 
 			&::placeholder {
-				@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
+				@include typography(Montserrat, 500, Medium, 10px, 100%, 0%, _);
 
 				color: $hero-input-fg-light;
 			}
@@ -95,6 +91,199 @@
 			border-radius: 0 10px 10px 0;
 
 			background-color: $accent-light;
+		}
+	}
+}
+
+@include tab() {
+	.hero {
+		& > div {
+			gap: 80px;
+		}
+
+		&__title {
+			@include typography(inherit, 600, SemiBold, 32px, 100%, 0%, center);
+			color: $hero-fg;
+		}
+
+		&__wrap {
+			flex-direction: row;
+			border: none;
+		}
+
+		&__text {
+			width: 50%;
+
+			padding-left: 40px;
+			padding-top: 16px;
+			padding-bottom: 16px;
+
+			// margin-right: 71;
+
+			@include typography(inherit, 500, Medium, 18px, 100%, 0%, left);
+			color: $hero-fg;
+
+			&:first-child {
+				width: 50%;
+
+				padding-right: 40px;
+				padding-left: 0;
+
+				margin-right: 0;
+
+				@include typography(inherit, 500, Medium, 18px, 100%, 0%, right);
+			}
+
+			&:last-child {
+				border-left: 3px solid $hero-fg;
+			}
+
+			&__sup {
+				@include typography(inherit, 500, Medium, 12px, 100%, 0%, _);
+			}
+		}
+
+		&__search {
+			width: 100%;
+			height: 42px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&__input {
+				height: 100%;
+				width: 100%;
+
+				padding: 12px 29px;
+
+				border-radius: 10px 0 0 10px;
+
+				@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
+
+				background-color: $hero-input-bg-light;
+
+				&::placeholder {
+					@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
+
+					color: $hero-input-fg-light;
+				}
+			}
+
+			&__button {
+				height: 100%;
+				width: 45px;
+
+				padding: 9px 10px;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				border-radius: 0 10px 10px 0;
+
+				background-color: $accent-light;
+			}
+		}
+	}
+}
+
+@include desk() {
+	.hero {
+		padding: 100px 0;
+
+		background: linear-gradient(0deg, #0000007a, #0000007a), url("../../img/hero_bg.jpg");
+		background-size: cover;
+		background-position: center;
+
+		& > div {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			gap: 80px;
+		}
+
+		&__title {
+			@include typography(inherit, 600, SemiBold, 40px, 100%, 0%, center);
+			color: $hero-fg;
+		}
+
+		&__wrap {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		&__text {
+			width: 40%;
+
+			padding-left: 52px;
+			padding-top: 16px;
+			padding-bottom: 16px;
+
+			margin-right: 0;
+
+			@include typography(inherit, 500, Medium, 24px, 100%, 0%, left);
+			color: $hero-fg;
+
+			&:first-child {
+				width: 40%;
+				padding-right: 52px;
+				padding-left: 0;
+
+				@include typography(inherit, 500, Medium, 24px, 100%, 0%, right);
+			}
+
+			&:last-child {
+				border-left: 3px solid $hero-fg;
+			}
+
+			&__sup {
+				@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+			}
+		}
+
+		&__search {
+			width: 634px;
+			height: 42px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&__input {
+				height: 100%;
+				width: 100%;
+
+				padding: 12px 29px;
+
+				border-radius: 10px 0 0 10px;
+
+				@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
+
+				background-color: $hero-input-bg-light;
+
+				&::placeholder {
+					@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
+
+					color: $hero-input-fg-light;
+				}
+			}
+
+			&__button {
+				height: 100%;
+				width: 45px;
+
+				padding: 9px 10px;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				border-radius: 0 10px 10px 0;
+
+				background-color: $accent-light;
+			}
 		}
 	}
 }
