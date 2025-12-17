@@ -2,12 +2,12 @@
 
 .weather-list {
 	display: flex;
-	gap: 90px;
+	gap: 35px;
 	flex-wrap: wrap;
 }
 
 .weather-card {
-	width: 320px;
+	width: 293px;
 	padding: 20px;
 
 	border-radius: 20px;
@@ -106,5 +106,25 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 10px;
+	}
+}
+
+@include tab() {
+	.weather-list {
+		gap: 48px;
+	}
+
+	.weather-card {
+		width: 293px;
+	}
+}
+
+@include desk() {
+	.weather-list {
+		gap: 90px;
+	}
+
+	.weather-card {
+		width: 320px;
 	}
 }
