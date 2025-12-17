@@ -11,6 +11,8 @@
 		margin-top: 40px;
 
 		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
 		gap: 20px;
 
 		&__link {
@@ -49,7 +51,7 @@
 	}
 
 	&__button-wrap {
-		margin-top: 20px;
+		margin: 20px auto 0 auto;
 		width: 120px;
 
 		display: flex;
@@ -70,6 +72,14 @@
 		&:disabled {
 			background-color: rgba($accent-light, 80%);
 			cursor: not-allowed;
+		}
+	}
+}
+
+@include desk() {
+	.news {
+		&__button-wrap {
+			margin: 20px 0 0 0;
 		}
 	}
 }
