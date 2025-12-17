@@ -5,19 +5,19 @@ export const WeeklyForecast = function ({ data }) {
 
 	return (
 		<>
-			<ul className={styles["weather-data__weekly-list"]}>
+			<ul className={styles["weather-data__weekly__list"]}>
 				{dailyData.map((el, i) => (
-					<li className={styles["weather-data__weekly-list__item"]} key={i}>
-						<p className={styles["weather-data__weekly-list__item__date"]}>
+					<li className={styles["weather-data__weekly__list__item"]} key={i}>
+						<p className={styles["weather-data__weekly__list__item__date"]}>
 							{`${new Date(el.dt_txt).toLocaleDateString("en-GB", { weekday: "short" })}, ${new Date(el.dt_txt).toLocaleDateString("en-GB", { month: "short" })} ${new Date(el.dt_txt).toLocaleDateString("en-GB", { day: "numeric" })}`}
 						</p>
 
-						<div className={styles["weather-data__weekly-list__item__middle-wrap"]}>
-							<img src={`https://openweathermap.org/img/wn/${el.weather[0].icon}@4x.png`} alt="" className={styles["weather-data__weekly-list__item__img"]} />
-							<p className={styles["weather-data__weekly-list__item__temperature"]}>{`${el.main.temp_max}/${el.main.temp_min}°C`}</p>
+						<div className={styles["weather-data__weekly__list__item__middle-wrap"]}>
+							<img src={`https://openweathermap.org/img/wn/${el.weather[0].icon}@4x.png`} alt="" className={styles["weather-data__weekly__list__item__img"]} />
+							<p className={styles["weather-data__weekly__list__item__temperature"]}>{`${el.main.temp_max}/${el.main.temp_min}°C`}</p>
 						</div>
 
-						<p className={styles["weather-data__weekly-list__item__weather"]}>{el.weather[0].description}</p>
+						<p className={styles["weather-data__weekly__list__item__weather"]}>{el.weather[0].description}</p>
 					</li>
 				))}
 			</ul>

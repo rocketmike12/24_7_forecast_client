@@ -25,6 +25,12 @@ export const HourlyForecast = function ({ data }) {
 			<Line
 				data={chartData}
 				options={{
+					responsive: true,
+					maintainAspectRatio: true,
+					scales: {
+						x: { beginAtZero: true },
+						y: { beginAtZero: true }
+					},
 					plugins: {
 						title: {
 							display: false

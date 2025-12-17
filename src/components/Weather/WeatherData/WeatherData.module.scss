@@ -1,8 +1,6 @@
 @import "../../../sass/base/base.scss";
 
 .weather-data {
-	padding: 60px 0;
-
 	&__location {
 		width: 100%;
 		display: flex;
@@ -53,7 +51,8 @@
 			padding: 20px;
 			border-radius: 20px;
 
-			width: 326px;
+			width: 293px;
+			height: 175px;
 
 			display: flex;
 			justify-content: space-between;
@@ -78,8 +77,10 @@
 	}
 
 	&__hourly {
+		height: fit-content;
+
 		margin-top: 40px;
-		padding: 40px;
+		padding: 16px;
 
 		border-radius: 20px;
 
@@ -95,7 +96,7 @@
 	&__weekly {
 		margin-top: 40px;
 
-		&-list {
+		&__list {
 			padding: 40px;
 			border-radius: 20px;
 
@@ -106,19 +107,20 @@
 			background-color: $card-bg-light;
 
 			&__item {
-				padding: 16px 32px;
+				padding: 20px;
 
 				border-radius: 20px;
 
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				flex-direction: column;
+				gap: 10px;
 
 				background-color: $card-bg-darker-light;
 
 				&__date {
 					@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
-					width: 120px;
 				}
 
 				&__middle-wrap {
@@ -137,9 +139,223 @@
 				}
 
 				&__weather {
-					width: 200px;
-
 					@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+				}
+			}
+		}
+	}
+}
+
+@include tab() {
+	.weather-data {
+		&__list {
+			margin-top: 40px;
+
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			gap: 0;
+			row-gap: 16px;
+
+			background-color: $card-bg-light;
+
+			&__item {
+				width: 175px;
+				height: 200px;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: column;
+
+				background-color: $card-bg-darker-light;
+
+				& > svg {
+					width: 85px;
+					height: 85px;
+				}
+			}
+
+			&__title {
+				@include typography(inherit, 500, Medium, 16px, 100%, 0%, center);
+			}
+
+			&__data {
+				@include typography(inherit, 500, Medium, 32px, 100%, 0%, center);
+			}
+		}
+
+		&__hourly {
+			height: fit-content;
+
+			margin-top: 40px;
+			padding: 40px;
+
+			border-radius: 20px;
+
+			background-color: $card-bg-light;
+
+			&__title {
+				@include typography(inherit, 600, Medium, 16px, 100%, 0%, _);
+
+				margin-bottom: 20px;
+			}
+		}
+
+		&__weekly {
+			&__list {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+
+				background-color: $card-bg-light;
+
+				&__item {
+					padding: 16px 32px;
+
+					border-radius: 20px;
+
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					flex-direction: row;
+
+					background-color: $card-bg-darker-light;
+
+					&__date {
+						@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+						width: 120px;
+					}
+
+					&__middle-wrap {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					}
+
+					&__img {
+						width: 45px;
+						height: 45px;
+					}
+
+					&__temperature {
+						@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+					}
+
+					&__weather {
+						width: 200px;
+
+						@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+					}
+				}
+			}
+		}
+	}
+}
+
+@include desk() {
+	.weather-data {
+		&__list {
+			margin-top: 40px;
+			padding: 40px;
+			border-radius: 20px;
+
+			display: flex;
+			flex-wrap: wrap;
+			gap: 40px;
+			flex-direction: row;
+
+			background-color: $card-bg-light;
+
+			&__item {
+				padding: 20px;
+				border-radius: 20px;
+
+				width: 326px;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: column;
+
+				background-color: $card-bg-darker-light;
+
+				& > svg {
+					width: 85px;
+					height: 85px;
+				}
+			}
+
+			&__title {
+				@include typography(inherit, 500, Medium, 16px, 100%, 0%, center);
+			}
+
+			&__data {
+				@include typography(inherit, 500, Medium, 32px, 100%, 0%, center);
+			}
+		}
+
+		&__hourly {
+			border-radius: 20px;
+
+			background-color: $card-bg-light;
+
+			&__title {
+				@include typography(inherit, 600, Medium, 16px, 100%, 0%, _);
+
+				margin-bottom: 20px;
+			}
+		}
+
+		&__weekly {
+			margin-top: 40px;
+
+			&__list {
+				padding: 40px;
+				border-radius: 20px;
+
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+
+				background-color: $card-bg-light;
+
+				&__item {
+					padding: 16px 32px;
+
+					border-radius: 20px;
+
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					background-color: $card-bg-darker-light;
+
+					&__date {
+						@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+						width: 120px;
+					}
+
+					&__middle-wrap {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					}
+
+					&__img {
+						width: 45px;
+						height: 45px;
+					}
+
+					&__temperature {
+						@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+					}
+
+					&__weather {
+						width: 200px;
+
+						@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+					}
 				}
 			}
 		}
