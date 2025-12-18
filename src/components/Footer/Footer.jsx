@@ -21,7 +21,7 @@ export const Footer = function () {
 							Ukraine
 						</p>
 					</address>
-					<div className={styles["footer__contacts"]}>
+					<div id="contacts" className={styles["footer__contacts"]}>
 						<h3 className={styles["footer__contacts__title"]}>Contact us</h3>
 						<ul className={styles["footer__contacts__list"]}>
 							<li className={styles["footer__contacts__list__item"]}>

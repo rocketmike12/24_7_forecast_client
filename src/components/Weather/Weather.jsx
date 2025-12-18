@@ -41,7 +41,7 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 	return (
 		<>
 			{((isLogin && favorites.length) || isOpen) && (
-				<section className={styles["weather"]}>
+				<section id="favorites" className={styles["weather"]}>
 					<Container>
 						{favorites.length && !isOpen ? (
 							<WeatherList openForecast={openForecast} closeForecast={closeForecast} delFavorite={delFavorite} places={favorites} />

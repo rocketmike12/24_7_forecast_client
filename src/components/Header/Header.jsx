@@ -54,18 +54,18 @@ export const Header = function ({ openModal }) {
 					<nav className={styles["header__nav"]}>
 						<ul className={styles["header__nav__list"]}>
 							<li className={styles["header__nav__list__item"]}>
-								<a href="#" className={styles["header__nav__list__link"]}>
-									Who we are
+								<a href="#favorites" className={styles["header__nav__list__link"]}>
+									Favorites
 								</a>
 							</li>
 							<li className={styles["header__nav__list__item"]}>
-								<a href="#" className={styles["header__nav__list__link"]}>
+								<a href="#news" className={styles["header__nav__list__link"]}>
+									News
+								</a>
+							</li>
+							<li className={styles["header__nav__list__item"]}>
+								<a href="#contacts" className={styles["header__nav__list__link"]}>
 									Contacts
-								</a>
-							</li>
-							<li className={styles["header__nav__list__item"]}>
-								<a href="#" className={styles["header__nav__list__link"]}>
-									Menu
 								</a>
 							</li>
 						</ul>
@@ -97,18 +97,18 @@ export const Header = function ({ openModal }) {
 					<nav className={styles["mob-menu__nav"]}>
 						<ul className={styles["mob-menu__nav__list"]}>
 							<li className={styles["mob-menu__nav__list__item"]}>
-								<a href="#" className={styles["mob-menu__nav__list__link"]}>
-									Who we are
+								<a href="#favorites" className={styles["mob-menu__nav__list__link"]}>
+									Favorites
 								</a>
 							</li>
 							<li className={styles["mob-menu__nav__list__item"]}>
-								<a href="#" className={styles["mob-menu__nav__list__link"]}>
+								<a href="#news" className={styles["mob-menu__nav__list__link"]}>
+									News
+								</a>
+							</li>
+							<li className={styles["mob-menu__nav__list__item"]}>
+								<a href="#contacts" className={styles["mob-menu__nav__list__link"]}>
 									Contacts
-								</a>
-							</li>
-							<li className={styles["mob-menu__nav__list__item"]}>
-								<a href="#" className={styles["mob-menu__nav__list__link"]}>
-									Menu
 								</a>
 							</li>
 						</ul>

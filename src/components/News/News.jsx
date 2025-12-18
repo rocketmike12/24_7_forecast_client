@@ -29,7 +29,7 @@ export const News = function () {
 
 	return (
 		<>
-			<section className={styles["news"]}>
+			<section id="news" className={styles["news"]}>
 				<Container>
 					{news.length && (
 						<>
