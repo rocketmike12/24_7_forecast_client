@@ -14,7 +14,7 @@ import styles from "./Weather.module.scss";
 export const Weather = function ({ isOpen, openForecast, closeForecast, selectedPlace }) {
 	const [reloadComponent, setReloadComponent] = useState(null);
 
-	const { favorites, setFavorites } = useContext(AuthContext);
+	const { isLogin, favorites, setFavorites } = useContext(AuthContext);
 
 	const addFavorite = async function (favorite) {
 		try {
@@ -40,15 +40,17 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 
 	return (
 		<>
-			<section className={styles["weather"]}>
-				<Container>
-					{favorites.length && !isOpen ? (
-						<WeatherList openForecast={openForecast} closeForecast={closeForecast} delFavorite={delFavorite} places={favorites} />
-					) : (
-						selectedPlace && <WeatherData addFavorite={addFavorite} delFavorite={delFavorite} place={selectedPlace} />
-					)}
-				</Container>
-			</section>
+			{((isLogin && favorites.length) || isOpen) && (
+				<section className={styles["weather"]}>
+					<Container>
+						{favorites.length && !isOpen ? (
+							<WeatherList openForecast={openForecast} closeForecast={closeForecast} delFavorite={delFavorite} places={favorites} />
+						) : (
+							selectedPlace && <WeatherData addFavorite={addFavorite} delFavorite={delFavorite} place={selectedPlace} />
+						)}
+					</Container>
+				</section>
+			)}
 		</>
 	);
 };

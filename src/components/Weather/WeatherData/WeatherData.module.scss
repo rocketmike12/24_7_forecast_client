@@ -273,9 +273,9 @@
 					}
 
 					&__weather {
-						width: 200px;
+						width: 20ex;
 
-						@include typography(inherit, 500, Medium, 16px, 100%, 0%, _);
+						@include typography(inherit, 500, Medium, 16px, 100%, 0%, right);
 					}
 				}
 			}
