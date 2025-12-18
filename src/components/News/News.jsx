@@ -35,16 +35,16 @@ export const News = function () {
 						<>
 							<h2 className={styles["news__title"]}>Latest pet news</h2>
 							<ul className={styles["news-list"]}>
-								{news.slice(currentPage * 4, (currentPage + 1) * 4).map((el) => (
+								{news.slice(currentPage * 4, (currentPage + 1) * 4).map((el, i) => (
 									<>
-										<a href={el.url} target="_blank" className={styles["news-list__link"]}>
-											<li className={styles["news-list__item"]}>
+										<li className={styles["news-list__item"]} key={i}>
+											<a href={el.url} target="_blank" className={styles["news-list__item__link"]}>
 												<div className={styles["news-list__item__img-container"]} style={{ backgroundImage: `url("${el.urlToImage}")` }}>
 													<img src={el.urlToImage} alt="article image" className={styles["news-list__item__img"]} />
 												</div>
 												<p className={styles["news-list__item__title"]}>{el.title}</p>
-											</li>
-										</a>
+											</a>
+										</li>
 									</>
 								))}
 							</ul>

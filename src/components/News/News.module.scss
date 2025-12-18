@@ -15,13 +15,13 @@
 		flex-wrap: wrap;
 		gap: 20px;
 
-		&__link {
-			text-decoration: none;
-			color: $fg-light;
-		}
-
 		&__item {
 			width: 270px;
+
+			&__link {
+				text-decoration: none;
+				color: $fg-light;
+			}
 
 			&__img-container {
 				width: 100%;
