@@ -7,7 +7,34 @@
 		justify-content: space-between;
 		align-items: center;
 
+		&__back-button {
+			padding: 10px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			background-color: $bg-light;
+
+			& > svg {
+				width: 16px;
+				height: 16px;
+
+				fill: $fg-light;
+			}
+
+			&:hover > svg {
+				width: 24px;
+				height: 24px;
+
+				fill: $accent-light;
+			}
+		}
+
 		&__city {
+			margin-right: auto;
+			margin-left: 20px;
+
 			@include typography(inherit, 500, Medium, 20px, 100%, 0%, _);
 		}
 
@@ -149,6 +176,30 @@
 @include tab() {
 	.weather-data {
 		&__location {
+			&__back-button {
+				padding: 10px;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				background-color: $bg-light;
+
+				& > svg {
+					width: 24px;
+					height: 24px;
+
+					fill: $fg-light;
+				}
+
+				&:hover > svg {
+					width: 24px;
+					height: 24px;
+
+					fill: $accent-light;
+				}
+			}
+
 			&__city {
 				@include typography(inherit, 500, Medium, 32px, 100%, 0%, _);
 			}

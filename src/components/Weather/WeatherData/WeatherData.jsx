@@ -7,6 +7,8 @@ import { weatherApi } from "../../../apis/weatherApi";
 
 import { toast } from "react-toastify";
 
+import { debounce } from "lodash";
+
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { HourlyForecast } from "./HourlyForecast";
@@ -14,6 +16,7 @@ import { HourlyForecast } from "./HourlyForecast";
 import { WeeklyForecast } from "./WeeklyForecast";
 
 import { FaHeart } from "react-icons/fa6";
+import { MdArrowBackIosNew } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa6";
 import { PiThermometerHotLight } from "react-icons/pi";
 import { PiThermometerColdLight } from "react-icons/pi";
@@ -37,7 +40,7 @@ export const WeatherData = function ({ place, addFavorite, delFavorite, closeFor
 			setWeather(data);
 		} catch (err) {
 			if (err.status === 404) {
-				toast.error("city not found", {toastId: "cityNotFound"});
+				toast.error("city not found", { toastId: "cityNotFound" });
 			}
 
 			closeForecast();
@@ -53,10 +56,10 @@ export const WeatherData = function ({ place, addFavorite, delFavorite, closeFor
 		setForecast(data);
 	};
 
-	const handleAddFavorite = function (e) {
+	const handleAddFavorite = debounce(function (e) {
 		if (favorites.includes(place)) return delFavorite(place);
 		addFavorite(place);
-	};
+	}, 100);
 
 	useEffect(() => {
 		getWeather();
@@ -69,6 +72,10 @@ export const WeatherData = function ({ place, addFavorite, delFavorite, closeFor
 				{weather && (
 					<>
 						<div className={styles["weather-data__location"]}>
+							<button onClick={closeForecast} className={styles["weather-data__location__back-button"]}>
+								<MdArrowBackIosNew />
+							</button>
+
 							<h2 className={styles["weather-data__location__city"]}>{`${weather.name}, ${weather.sys.country}`}</h2>
 
 							<button onClick={handleAddFavorite} className={styles["weather-data__location__favorite-button"]}>
