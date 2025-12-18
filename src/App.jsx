@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { AuthContext } from "./contexts/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 import { Header } from "./components/Header/Header";
 import { Hero } from "./components/Hero/Hero";
@@ -9,6 +9,8 @@ import { News } from "./components/News/News";
 import { Footer } from "./components/Footer/Footer";
 
 import { AuthModal } from "./components/AuthModal/AuthModal";
+
+import { colors } from "./data/colors";
 
 export const App = function () {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,15 +39,13 @@ export const App = function () {
 
 	return (
 		<>
+			<ToastContainer closeOnClick pauseOnHover={false} style={{ padding: 0 }} toastStyle={{ color: colors.fgLight, height: "100px", boxShadow: `0 0 16px 0 ${colors.fgLight}` }} />
 			<AuthModal isOpen={isModalOpen} role={modalRole} setRole={setModalRole} closeModal={closeModal} />
-
 			<Header openModal={openModal} />
-
 			<Hero isSearch={isSearch} openForecast={openForecast} closeForecast={closeForecast} />
-
 			<Weather isOpen={isForecastOpen} openForecast={openForecast} closeForecast={closeForecast} selectedPlace={selectedPlace} />
 			<News />
-			<Footer />
+			<Footer />:
 		</>
 	);
 };

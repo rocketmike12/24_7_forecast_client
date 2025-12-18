@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 		} catch (err) {
 			if (err.status === 401) return;
 
-			console.error(err);
+			// console.error(err);
 		}
 	};
 

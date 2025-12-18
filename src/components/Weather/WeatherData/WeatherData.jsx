@@ -5,6 +5,8 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import axios from "axios";
 import { weatherApi } from "../../../apis/weatherApi";
 
+import { toast } from "react-toastify";
+
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { HourlyForecast } from "./HourlyForecast";
@@ -24,14 +26,24 @@ import styles from "./WeatherData.module.scss";
 
 Chart.register(CategoryScale);
 
-export const WeatherData = function ({ place, addFavorite, delFavorite }) {
+export const WeatherData = function ({ place, addFavorite, delFavorite, closeForecast }) {
 	const { favorites, setFavorites } = useContext(AuthContext);
 
 	const [weather, setWeather] = useState(null);
 
 	const getWeather = async function () {
-		const { data } = await weatherApi.get("/weather", { params: { q: place } });
-		setWeather(data);
+		try {
+			const { data } = await weatherApi.get("/weather", { params: { q: place } });
+			setWeather(data);
+		} catch (err) {
+			if (err.status === 404) {
+				toast.error("city not found", {toastId: "cityNotFound"});
+			}
+
+			closeForecast();
+
+			// console.error(err)
+		}
 	};
 
 	const [forecast, setForecast] = useState(null);

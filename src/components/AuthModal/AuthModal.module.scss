@@ -81,7 +81,7 @@
 
 			border-radius: 10px;
 
-			@include typography(Montserrat, 400, Medium, 12px, 100%, 0%, _);
+			@include typography(Montserrat, 500, Medium, 12px, 100%, 0%, _);
 		}
 
 		&__login {
@@ -184,7 +184,7 @@
 			}
 
 			&__btn {
-				@include typography(Montserrat, 400, Medium, 14px, 100%, 0%, _);
+				@include typography(Montserrat, 500, Medium, 14px, 100%, 0%, _);
 			}
 
 			&__login {

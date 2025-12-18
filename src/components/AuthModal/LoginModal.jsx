@@ -5,6 +5,8 @@ import { userApi } from "../../apis/userApi";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
+import { toast } from "react-toastify";
+
 import styles from "./AuthModal.module.scss";
 
 export const LoginModal = function ({ setRole, closeModal }) {
@@ -15,23 +17,33 @@ export const LoginModal = function ({ setRole, closeModal }) {
 			const { data } = await userApi.post("/login", { username: username, password: password }, { withCredentials: true });
 			setIsLogin(true);
 			setUsername(data.username);
+
+			return true;
 		} catch (err) {
-			console.error(err);
+			if (err.status === 401) {
+				toast.error("login incorrect");
+			}
+
+			// console.error(err);
+
+			return false;
 		}
 	};
 
-	const handleSubmit = function (e) {
+	const handleSubmit = async function (e) {
 		e.preventDefault();
 
 		const form = e.currentTarget;
 		const username = form.elements.username.value;
 		const password = form.elements.password.value;
 
-		loginUser(username, password);
+		const loginRes = await loginUser(username, password);
 
-		form.reset();
-
-		closeModal();
+		if (loginRes) {
+			toast.dismiss();
+			closeModal();
+			form.reset();
+		}
 	};
 
 	const handleRole = function (e) {
@@ -52,7 +64,7 @@ export const LoginModal = function ({ setRole, closeModal }) {
 						<label htmlFor="username" className={styles["modal__input-label"]}>
 							Username
 						</label>
-						<input type="text" name="username" placeholder="Username" className={styles["modal__input"]} />
+						<input required type="text" name="username" placeholder="Username" className={styles["modal__input"]} />
 					</div>
 
 					{/* <div className={styles["modal__input-wrap"]}> */}
@@ -66,7 +78,7 @@ export const LoginModal = function ({ setRole, closeModal }) {
 						<label htmlFor="password" className={styles["modal__input-label"]}>
 							Password
 						</label>
-						<input type="text" name="password" placeholder="Password" className={styles["modal__input"]} />
+						<input required type="text" name="password" placeholder="Password" className={styles["modal__input"]} />
 					</div>
 
 					<button type="submit" className={styles["modal__btn"]}>

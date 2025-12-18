@@ -57,7 +57,7 @@ export const Hero = function ({ isSearch, openForecast, closeForecast }) {
 						</p>
 					</div>
 					<form onSubmit={handleSubmit} className={styles["hero__search"]}>
-						<input onChange={handleChange} autoFocus type="text" placeholder="Search location..." name="search" className={styles["hero__search__input"]} />
+						<input required onChange={handleChange} autoFocus type="text" placeholder="Search location..." name="search" className={styles["hero__search__input"]} />
 						<button className={styles["hero__search__button"]}>
 							<FiSearch />
 						</button>
