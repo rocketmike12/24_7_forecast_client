@@ -78,7 +78,7 @@ export const LoginModal = function ({ setRole, closeModal }) {
 						<label htmlFor="password" className={styles["modal__input-label"]}>
 							Password
 						</label>
-						<input required type="text" name="password" placeholder="Password" className={styles["modal__input"]} />
+						<input required type="password" name="password" placeholder="Password" className={styles["modal__input"]} />
 					</div>
 
 					<button type="submit" className={styles["modal__btn"]}>

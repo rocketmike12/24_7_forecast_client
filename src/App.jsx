@@ -40,7 +40,7 @@ export const App = function () {
 
 	return (
 		<>
-			<ToastContainer closeOnClick pauseOnHover={false} style={{ padding: 0 }} toastStyle={{ color: colors.fgLight, height: "100px", boxShadow: `0 0 16px 0 ${colors.fgLight}` }} />
+			<ToastContainer closeOnClick pauseOnHover={false} style={{ padding: 0 }} toastStyle={{ color: colors.fgLight, width: "fit-content", height: "100px", boxShadow: `0 0 16px 0 ${colors.fgLight}` }} />
 			<AuthModal isOpen={isModalOpen} role={modalRole} setRole={setModalRole} closeModal={closeModal} />
 			<Header openModal={openModal} />
 			<Hero isSearch={isSearch} openForecast={openForecast} closeForecast={closeForecast} />

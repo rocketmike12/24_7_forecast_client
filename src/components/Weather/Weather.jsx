@@ -4,6 +4,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 import { userApi } from "../../apis/userApi";
 
+import { toast } from "react-toastify";
+
 import { Container } from "../Container/Container";
 
 import { WeatherList } from "./WeatherList/WeatherList";
@@ -21,7 +23,11 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 			const { data } = await userApi.post("/favorite", { favorite: favorite }, { withCredentials: true });
 			setFavorites(data.favorites);
 		} catch (err) {
-			console.error(err);
+			if (err.status === 401) {
+				toast.error("please login to add the location to favorites", { toastId: "pleaseLogin" });
+			}
+
+			// console.error(err);
 		}
 	};
 
@@ -30,7 +36,7 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 			const { data } = await userApi.post("/delfavorite", { favorite: favorite }, { withCredentials: true });
 			setFavorites(data.favorites);
 		} catch (err) {
-			console.error(err);
+			// console.error(err);
 		}
 	};
 
