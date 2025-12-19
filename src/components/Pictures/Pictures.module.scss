@@ -1,0 +1,109 @@
+@import "../../sass/base/base.scss";
+
+.pictures {
+	display: none;
+}
+
+@include desk() {
+	.pictures {
+		display: block;
+
+		& > div {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+		padding: 40px 0;
+
+		&__scroll-button {
+			padding: 10px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			background-color: transparent;
+
+			& > svg {
+				width: 40px;
+				height: 40px;
+
+				fill: $fg-light;
+			}
+
+			&:disabled {
+				cursor: not-allowed;
+
+				& > svg {
+					fill: rgba($fg-light, 50%);
+				}
+			}
+		}
+
+		&__list {
+			width: 100%;
+			height: 211px;
+
+			position: relative;
+
+			display: flex;
+			align-items: center;
+
+			&__item {
+				position: absolute;
+				&:nth-child(1) {
+					width: 248px;
+					height: 136px;
+
+					left: 0;
+					z-index: 1;
+				}
+
+				&:nth-child(2) {
+					width: 310px;
+					height: 170px;
+
+					left: calc((50% - 124px) / 2 - 72px);
+					z-index: 2;
+				}
+
+				&:nth-child(3) {
+					width: 384px;
+					height: 211px;
+
+					left: calc(50% - 192px);
+
+					z-index: 3;
+				}
+
+				&:nth-child(4) {
+					width: 310px;
+					height: 170px;
+
+					right: 68px;
+
+					right: calc((50% - 124px) / 2 - 72px);
+					z-index: 2;
+				}
+
+				&:nth-child(5) {
+					width: 236px;
+					height: 136px;
+
+					right: 0;
+					z-index: 1;
+				}
+
+				&__img {
+					display: none;
+				}
+
+				&__img-container {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+}
