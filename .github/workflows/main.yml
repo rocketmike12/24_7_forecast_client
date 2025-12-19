@@ -40,6 +40,7 @@ jobs:
           VITE_USERS_API: ${{ secrets.VITE_USERS_API }}
           VITE_WEATHER_API: ${{ secrets.VITE_WEATHER_API }}
           VITE_NEWS_API: ${{ secrets.VITE_NEWS_API }}
+          VITE_PICTURES_API: ${{ secrets.VITE_PICTURES_API }}
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
