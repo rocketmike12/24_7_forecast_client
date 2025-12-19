@@ -11,7 +11,7 @@ export const News = function () {
 	const [currentPage, setCurrentPage] = useState(0);
 
 	const getData = async function () {
-		const { data } = await newsApi.get("/", { params: { q: "pets" } });
+		const { data } = await newsApi.get("/", { params: { q: "cat", domains: "cheezburger.com" } });
 		setNews(data.articles.filter((el) => el.urlToImage));
 	};
 
@@ -41,7 +41,7 @@ export const News = function () {
 											<div className={styles["news-list__item__img-container"]} style={{ backgroundImage: `url("${el.urlToImage}")` }}>
 												<img src={el.urlToImage} alt="article image" className={styles["news-list__item__img"]} />
 											</div>
-											<p className={styles["news-list__item__title"]}>{el.title}</p>
+											<p className={styles["news-list__item__title"]}>{el.title.length > 85 ? el.title.slice(0, 82) + "..." : el.title}</p>
 										</a>
 									</li>
 								))}
