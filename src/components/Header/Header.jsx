@@ -19,7 +19,7 @@ export const Header = function ({ openModal }) {
 
 	const logoutUser = async function () {
 		try {
-			await userApi.post("/logout", "", { withCredentials: true });
+			await userApi.post("/logout", "", { withCredentials: true, credentials: "include" });
 			setIsLogin(false);
 			setUsername(null);
 			setFavorites([]);
