@@ -32,39 +32,43 @@ export const Pictures = function () {
 
 	return (
 		<>
-			<section className={styles["pictures"]}>
-				<Container>
-					{currentPage == 0 ? (
-						<button disabled className={styles["pictures__scroll-button"]}>
-							<MdOutlineKeyboardArrowLeft />
-						</button>
-					) : (
-						<button onClick={scrollBackward} className={styles["pictures__scroll-button"]}>
-							<MdOutlineKeyboardArrowLeft />
-						</button>
-					)}
-					<ul className={styles["pictures__list"]}>
-						{pictures.slice(currentPage, currentPage + 5).map((el, i) => (
-							<li className={styles["pictures__list__item"]} key={i}>
-								<a href={el.pageURL} target="_blank" className={styles["pictures__list__item__link"]}>
-									<div className={styles["pictures__list__item__img-container"]} style={{ backgroundImage: `url("${el.webformatURL}")` }}>
-										<img src={el.webformatURL} alt="article image" className={styles["pictures__list__item__img"]} />
-									</div>
-								</a>
-							</li>
-						))}
-					</ul>
-					{currentPage >= pictures.length - 5 ? (
-						<button disabled className={styles["pictures__scroll-button"]}>
-							<MdOutlineKeyboardArrowRight />
-						</button>
-					) : (
-						<button onClick={scrollForward} className={styles["pictures__scroll-button"]}>
-							<MdOutlineKeyboardArrowRight />
-						</button>
-					)}
-				</Container>
-			</section>
+			{pictures.length ? (
+				<section className={styles["pictures"]}>
+					<Container>
+						{currentPage == 0 ? (
+							<button disabled className={styles["pictures__scroll-button"]}>
+								<MdOutlineKeyboardArrowLeft />
+							</button>
+						) : (
+							<button onClick={scrollBackward} className={styles["pictures__scroll-button"]}>
+								<MdOutlineKeyboardArrowLeft />
+							</button>
+						)}
+						<ul className={styles["pictures__list"]}>
+							{pictures.slice(currentPage, currentPage + 5).map((el, i) => (
+								<li className={styles["pictures__list__item"]} key={i}>
+									<a href={el.pageURL} target="_blank" className={styles["pictures__list__item__link"]}>
+										<div className={styles["pictures__list__item__img-container"]} style={{ backgroundImage: `url("${el.webformatURL}")` }}>
+											<img src={el.webformatURL} alt="article image" className={styles["pictures__list__item__img"]} />
+										</div>
+									</a>
+								</li>
+							))}
+						</ul>
+						{currentPage >= pictures.length - 5 ? (
+							<button disabled className={styles["pictures__scroll-button"]}>
+								<MdOutlineKeyboardArrowRight />
+							</button>
+						) : (
+							<button onClick={scrollForward} className={styles["pictures__scroll-button"]}>
+								<MdOutlineKeyboardArrowRight />
+							</button>
+						)}
+					</Container>
+				</section>
+			) : (
+				<></>
+			)}
 		</>
 	);
 };

@@ -27,50 +27,48 @@ export const News = function () {
 		setCurrentPage(currentPage - 1);
 	};
 
-	return (
+	return news.length ? (
 		<>
 			<section id="news" className={styles["news"]}>
 				<Container>
-					{news.length && (
-						<>
-							<h2 className={styles["news__title"]}>Latest pet news</h2>
-							<ul className={styles["news-list"]}>
-								{news.slice(currentPage * 4, (currentPage + 1) * 4).map((el, i) => (
-									<li className={styles["news-list__item"]} key={i}>
-										<a href={el.url} target="_blank" className={styles["news-list__item__link"]}>
-											<div className={styles["news-list__item__img-container"]} style={{ backgroundImage: `url("${el.urlToImage}")` }}>
-												<img src={el.urlToImage} alt="article image" className={styles["news-list__item__img"]} />
-											</div>
-											<p className={styles["news-list__item__title"]}>{el.title.length > 85 ? el.title.slice(0, 82) + "..." : el.title}</p>
-										</a>
-									</li>
-								))}
-							</ul>
-							<div className={styles["news__button-wrap"]}>
-								{currentPage == 0 ? (
-									<button disabled className={styles["news__scroll-button"]}>
-										{"<"}
-									</button>
-								) : (
-									<button onClick={scrollBackward} className={styles["news__scroll-button"]}>
-										{"<"}
-									</button>
-								)}
-								<p className={styles["news__current-page"]}>{currentPage + 1}</p>
-								{currentPage >= (news.length - 4) / 4 ? (
-									<button disabled className={styles["news__scroll-button"]}>
-										{">"}
-									</button>
-								) : (
-									<button onClick={scrollForward} className={styles["news__scroll-button"]}>
-										{">"}
-									</button>
-								)}
-							</div>
-						</>
-					)}
+					<h2 className={styles["news__title"]}>Latest pet news</h2>
+					<ul className={styles["news-list"]}>
+						{news.slice(currentPage * 4, (currentPage + 1) * 4).map((el, i) => (
+							<li className={styles["news-list__item"]} key={i}>
+								<a href={el.url} target="_blank" className={styles["news-list__item__link"]}>
+									<div className={styles["news-list__item__img-container"]} style={{ backgroundImage: `url("${el.urlToImage}")` }}>
+										<img src={el.urlToImage} alt="article image" className={styles["news-list__item__img"]} />
+									</div>
+									<p className={styles["news-list__item__title"]}>{el.title.length > 85 ? el.title.slice(0, 82) + "..." : el.title}</p>
+								</a>
+							</li>
+						))}
+					</ul>
+					<div className={styles["news__button-wrap"]}>
+						{currentPage == 0 ? (
+							<button disabled className={styles["news__scroll-button"]}>
+								{"<"}
+							</button>
+						) : (
+							<button onClick={scrollBackward} className={styles["news__scroll-button"]}>
+								{"<"}
+							</button>
+						)}
+						<p className={styles["news__current-page"]}>{currentPage + 1}</p>
+						{currentPage >= (news.length - 4) / 4 ? (
+							<button disabled className={styles["news__scroll-button"]}>
+								{">"}
+							</button>
+						) : (
+							<button onClick={scrollForward} className={styles["news__scroll-button"]}>
+								{">"}
+							</button>
+						)}
+					</div>
 				</Container>
 			</section>
 		</>
+	) : (
+		<></>
 	);
 };
