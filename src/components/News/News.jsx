@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 import { Container } from "../Container/Container";
 
@@ -7,12 +9,15 @@ import { newsApi } from "../../apis/newsApi";
 import styles from "./News.module.scss";
 
 export const News = function () {
+	const { setIsNewsLoading } = useContext(LoadingContext);
+
 	const [news, setNews] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
 
 	const getData = async function () {
 		const { data } = await newsApi.get("/", { params: { q: "cat", domains: "cheezburger.com" } });
 		setNews(data.articles.filter((el) => el.urlToImage));
+		setIsNewsLoading(false);
 	};
 
 	useEffect(() => {

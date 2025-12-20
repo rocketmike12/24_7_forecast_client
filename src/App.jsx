@@ -1,7 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { LoadingContext } from "./contexts/LoadingContext";
 
 import { ToastContainer } from "react-toastify";
 
+import { Loader } from "./components/Loader/Loader";
+
+import { AuthModal } from "./components/AuthModal/AuthModal";
 import { Header } from "./components/Header/Header";
 import { Hero } from "./components/Hero/Hero";
 import { Weather } from "./components/Weather/Weather";
@@ -9,11 +14,11 @@ import { News } from "./components/News/News";
 import { Pictures } from "./components/Pictures/Pictures";
 import { Footer } from "./components/Footer/Footer";
 
-import { AuthModal } from "./components/AuthModal/AuthModal";
-
 import { colors } from "./data/colors";
 
 export const App = function () {
+	const { isLoading } = useContext(LoadingContext);
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalRole, setModalRole] = useState("register");
 	const [isSearch, setIsSearch] = useState(false);
@@ -40,7 +45,13 @@ export const App = function () {
 
 	return (
 		<>
-			<ToastContainer closeOnClick pauseOnHover={false} style={{ padding: 0 }} toastStyle={{ color: colors.fgLight, width: "fit-content", height: "100px", boxShadow: `0 0 16px 0 ${colors.fgLight}` }} />
+			<ToastContainer
+				closeOnClick
+				pauseOnHover={false}
+				style={{ padding: 0 }}
+				toastStyle={{ color: colors.fgLight, width: "fit-content", height: "100px", boxShadow: `0 0 16px 0 ${colors.fgLight}` }}
+			/>
+			{isLoading && <Loader />}
 			<AuthModal isOpen={isModalOpen} role={modalRole} setRole={setModalRole} closeModal={closeModal} />
 			<Header openModal={openModal} />
 			<Hero isSearch={isSearch} openForecast={openForecast} closeForecast={closeForecast} />

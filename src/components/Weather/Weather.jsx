@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
+import { LoadingContext } from "../../contexts/LoadingContext";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import { userApi } from "../../apis/userApi";
@@ -14,6 +15,8 @@ import { WeatherData } from "./WeatherData/WeatherData";
 import styles from "./Weather.module.scss";
 
 export const Weather = function ({ isOpen, openForecast, closeForecast, selectedPlace }) {
+	const { setIsWeatherLoading } = useContext(LoadingContext);
+
 	const [reloadComponent, setReloadComponent] = useState(null);
 
 	const { isLogin, favorites, setFavorites } = useContext(AuthContext);
@@ -43,6 +46,12 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 	useEffect(() => {
 		setReloadComponent(favorites);
 	}, [favorites]);
+
+	useEffect(() => {
+		if (!isLogin) {
+			setIsWeatherLoading(false);
+		}
+	}, []);
 
 	return (
 		<>

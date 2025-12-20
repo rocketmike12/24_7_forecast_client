@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 import { Container } from "../Container/Container";
 
@@ -10,12 +12,15 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import styles from "./Pictures.module.scss";
 
 export const Pictures = function () {
+	const { setIsPicturesLoading } = useContext(LoadingContext);
+
 	const [pictures, setPictures] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
 
 	const getData = async function () {
 		const { data } = await picturesApi.get("/", { params: { q: "nature", safesearch: "true", orientation: "horizontal", page: currentPage + 1, perPage: 25 } });
 		setPictures(data.hits);
+		setIsPicturesLoading(false);
 	};
 
 	useEffect(() => {

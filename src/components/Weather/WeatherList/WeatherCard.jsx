@@ -8,7 +8,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 
 import styles from "./WeatherList.module.scss";
 
-export const WeatherCard = function ({ openForecast, closeForecast, delFavorite, place }) {
+export const WeatherCard = function ({ onCardLoad, openForecast, closeForecast, delFavorite, place }) {
 	const [date, setDate] = useState(new Date());
 
 	const [weather, setWeather] = useState(null);
@@ -17,6 +17,7 @@ export const WeatherCard = function ({ openForecast, closeForecast, delFavorite,
 		const { data } = await weatherApi.get("/weather", { params: { q: place } });
 		setWeather(data);
 		setDate(new Date());
+		onCardLoad();
 	};
 
 	const handleForecast = function (e) {

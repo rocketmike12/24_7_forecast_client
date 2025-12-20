@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
+import { LoadingContext } from "../../../contexts/LoadingContext";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 import axios from "axios";
@@ -30,6 +31,8 @@ import styles from "./WeatherData.module.scss";
 Chart.register(CategoryScale);
 
 export const WeatherData = function ({ place, addFavorite, delFavorite, closeForecast }) {
+	const { setIsWeatherLoading } = useContext(LoadingContext);
+
 	const { favorites, setFavorites } = useContext(AuthContext);
 
 	const [weather, setWeather] = useState(null);
@@ -62,6 +65,11 @@ export const WeatherData = function ({ place, addFavorite, delFavorite, closeFor
 	}, 100);
 
 	useEffect(() => {
+		setIsWeatherLoading(Boolean(weather.length && forecast.length));
+	}, [weather, forecast]);
+
+	useEffect(() => {
+		setIsWeatherLoading(true);
 		getWeather();
 		getForecast();
 	}, [place]);
