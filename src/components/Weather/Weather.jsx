@@ -48,14 +48,12 @@ export const Weather = function ({ isOpen, openForecast, closeForecast, selected
 	}, [favorites]);
 
 	useEffect(() => {
-		if (!isLogin) {
-			setIsWeatherLoading(false);
-		}
-	}, []);
+			setIsWeatherLoading(isOpen);
+	}, [isOpen]);
 
 	return (
 		<>
-			{((isLogin && favorites.length) || isOpen) && (
+			{((isLogin && favorites.length > 0) || isOpen) && (
 				<section id="favorites" className={styles["weather"]}>
 					<Container>
 						{favorites.length && !isOpen ? (

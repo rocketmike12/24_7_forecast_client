@@ -65,7 +65,7 @@ export const WeatherData = function ({ place, addFavorite, delFavorite, closeFor
 	}, 100);
 
 	useEffect(() => {
-		setIsWeatherLoading(Boolean(weather.length && forecast.length));
+		setIsWeatherLoading(!Boolean(weather !== null && forecast !== null));
 	}, [weather, forecast]);
 
 	useEffect(() => {
@@ -77,7 +77,7 @@ export const WeatherData = function ({ place, addFavorite, delFavorite, closeFor
 	return (
 		<>
 			<div className={styles["weather-data"]}>
-				{weather && (
+				{weather !== null && (
 					<>
 						<div className={styles["weather-data__location"]}>
 							<button onClick={closeForecast} className={styles["weather-data__location__back-button"]}>
@@ -127,7 +127,7 @@ export const WeatherData = function ({ place, addFavorite, delFavorite, closeFor
 					</>
 				)}
 
-				{forecast && (
+				{forecast !== null && (
 					<>
 						<div className={styles["weather-data__hourly"]}>
 							<h2 className={styles["weather-data__hourly__title"]}>5-day temperature forecast</h2>

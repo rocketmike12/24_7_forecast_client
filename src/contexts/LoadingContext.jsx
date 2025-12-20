@@ -15,7 +15,6 @@ export const LoadingProvider = ({ children }) => {
 
 	useEffect(() => {
 		setIsLoading(isLoginLoading || isWeatherLoading || isNewsLoading || isPicturesLoading);
-		console.log([isLoginLoading, isWeatherLoading, isNewsLoading, isPicturesLoading]);
 	}, [isLoginLoading, isWeatherLoading, isNewsLoading, isPicturesLoading]);
 
 	return <LoadingContext.Provider value={{ setIsLoginLoading, setIsWeatherLoading, setIsNewsLoading, setIsPicturesLoading, isLoading }}>{children}</LoadingContext.Provider>;

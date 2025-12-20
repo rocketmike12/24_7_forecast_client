@@ -12,7 +12,7 @@ export const WeatherList = function ({ openForecast, closeForecast, delFavorite,
 	const [loadedElements, setLoadedElements] = useState(0);
 
 	useEffect(() => {
-		setIsWeatherLoading(loadedElements === places.length);
+		setIsWeatherLoading(loadedElements == 0);
 	}, [loadedElements]);
 
 	const onCardLoad = function () {

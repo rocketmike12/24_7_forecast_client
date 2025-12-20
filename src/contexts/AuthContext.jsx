@@ -15,16 +15,12 @@ export const AuthProvider = ({ children }) => {
 	const [favorites, setFavorites] = useState([]);
 
 	const getSession = async function () {
-		console.log("getSession");
 		try {
 			const { data } = await userApi.post("/session", "", { withCredentials: true });
 			setIsLogin(true);
 			setUsername(data.username);
 			setFavorites(data.favorites);
-
-			console.log("getSession try");
 		} catch (err) {
-			console.log("getSession err");
 			if (err.status === 401) {
 				setIsLoginLoading(false);
 				return;
